@@ -1,5 +1,6 @@
-import Head from 'next/head'
-import Image from 'next/image'
+import Head from "next/head";
+import Image from "next/image";
+import * as React from "react";
 
 export const Home = (): JSX.Element => (
   <div className="container">
@@ -19,7 +20,7 @@ export const Home = (): JSX.Element => (
 
       <button
         onClick={() => {
-          window.alert('With typescript and Jest')
+          window.alert("With typescript and Jest");
         }}
       >
         Test Button
@@ -36,10 +37,7 @@ export const Home = (): JSX.Element => (
           <p>Learn about Next.js in an interactive course with quizzes!</p>
         </a>
 
-        <a
-          href="https://github.com/vercel/next.js/tree/master/examples"
-          className="card"
-        >
+        <a href="https://github.com/vercel/next.js/tree/master/examples" className="card">
           <h3>Examples &rarr;</h3>
           <p>Discover and deploy boilerplate example Next.js projects.</p>
         </a>
@@ -60,8 +58,7 @@ export const Home = (): JSX.Element => (
         target="_blank"
         rel="noopener noreferrer"
       >
-        Powered by{' '}
-        <Image src="/vercel.svg" alt="Vercel Logo" height={'32'} width={'64'} />
+        Powered by <Image src="/vercel.svg" alt="Vercel Logo" height={"32"} width={"64"} />
       </a>
     </footer>
 
@@ -140,8 +137,8 @@ export const Home = (): JSX.Element => (
         border-radius: 5px;
         padding: 0.75rem;
         font-size: 1.1rem;
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono,
+          Courier New, monospace;
       }
 
       .grid {
@@ -197,8 +194,8 @@ export const Home = (): JSX.Element => (
       body {
         padding: 0;
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-          Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans,
+          Droid Sans, Helvetica Neue, sans-serif;
       }
 
       * {
@@ -206,6 +203,6 @@ export const Home = (): JSX.Element => (
       }
     `}</style>
   </div>
-)
+);
 
-export default Home
+export default Home;

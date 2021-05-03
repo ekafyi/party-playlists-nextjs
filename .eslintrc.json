@@ -1,13 +1,15 @@
 {
   "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint"],
+  "plugins": [
+    "@typescript-eslint",
+    "import",
+    "react"
+  ],
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
-    "plugin:@typescript-eslint/recommended"
-    // Uncomment the following lines to enable eslint-config-prettier
-    // Is not enabled right now to avoid issues with the Next.js repo
-    // "prettier",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "env": {
     "es6": true,
@@ -37,10 +39,24 @@
         "argsIgnorePattern": "^_"
       }
     ],
-    "no-console": [
-      2,
+    "no-console": "off",
+    // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/order.md
+    "import/order": [
+      "error",
       {
-        "allow": ["warn", "error"]
+        "groups": [
+          "builtin",
+          "external",
+          "internal"
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "react"
+        ],
+        "newlines-between": "always",
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
       }
     ]
   }
