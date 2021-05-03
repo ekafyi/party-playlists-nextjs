@@ -1,14 +1,11 @@
 {
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.formatOnSave": true,
-	"editor.codeActionsOnSave": [
-		"source.organizeImports",
-		"source.fixAll.eslint"
-	],
-	"files.insertFinalNewline": true,
-	"files.trimTrailingWhitespace": true,
-	"typescript.tsdk": "./node_modules/typescript/lib",
-	"[markdown]": {
-		"files.trimTrailingWhitespace": false
-	}
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": ["source.organizeImports", "source.fixAll.eslint"],
+  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "typescript.tsdk": "./node_modules/typescript/lib",
+  "[markdown]": {
+    "files.trimTrailingWhitespace": false
+  }
 }

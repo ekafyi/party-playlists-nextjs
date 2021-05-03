@@ -7,16 +7,21 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "type-check": "tsc --pretty --noEmit",
-    "format": "prettier --write .",
-    "lint": "eslint . --ext ts --ext tsx --ext js",
+    "lint": "yarn lint:tsc && yarn lint:eslint && yarn lint:prettier",
+    "lint:tsc": "tsc --pretty --noEmit",
+    "lint:eslint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "lint:prettier": "prettier --check .",
+    "lint:conflict": "eslint-config-prettier .eslintrc.json",
+    "fix": "yarn fix:eslint && yarn fix:prettier",
+    "fix:eslint": "eslint . --fix --ext .js,.jsx,.ts,.tsx",
+    "fix:prettier": "prettier --write .",
     "test": "jest",
-    "test-all": "yarn lint && yarn type-check && yarn test"
+    "test-all": "yarn lint && yarn test"
   },
   "lint-staged": {
     "*.@(ts|tsx)": [
       "yarn lint",
-      "yarn format"
+      "yarn fix"
     ]
   },
   "dependencies": {
