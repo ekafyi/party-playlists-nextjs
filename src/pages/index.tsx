@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import * as React from "react";
+import { HomeHeader } from "../ui";
 
 export const Home = (): JSX.Element => (
   <div className="container">
@@ -9,10 +10,11 @@ export const Home = (): JSX.Element => (
       <link rel="icon" href="/favicon.ico" />
     </Head>
 
+    <HomeHeader />
     <main>
-      <h1 className="title text-center font-bold text-4xl md:text-6xl mb-6">
+      <strong className="title text-center font-bold text-4xl md:text-6xl mb-6">
         Welcome to <a href="https://nextjs.org">Next.js!</a>
-      </h1>
+      </strong>
 
       <p className="description text-center text-xl mb-8">
         Get started by editing <code>pages/index.tsx</code>

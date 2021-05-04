@@ -9,6 +9,10 @@
     min-height: 100vh;
     min-height: -webkit-fill-available;
   }
+  /* Gradients from https://hypercolor.dev/#gradients */
+  body {
+    @apply bg-gradient-to-tl from-green-200 to-purple-300;
+  }
 }
 
 @layer components {

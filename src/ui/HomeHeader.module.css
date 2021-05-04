@@ -1,0 +1,32 @@
+.header {
+  @apply w-full my-8 md:mb-12;
+}
+
+.header__title {
+  @apply text-5xl md:text-6xl font-extrabold leading-none pb-4 text-transparent bg-clip-text bg-gradient-to-br from-indigo-800 via-blue-700 to-green-700;
+  max-width: 16ch;
+}
+
+.header__desc {
+  @apply text-gray-600 text-base;
+}
+
+.header__desc a {
+  @apply text-indigo-700 border-indigo-500 hover:text-gray-900 font-bold border-b;
+}
+
+.header__desc code {
+  @apply bg-indigo-200 text-sm p-1 rounded-sm;
+}
+
+@media (min-width: 1024px) {
+  .header__title {
+    max-width: unset;
+  }
+}
+
+@supports not (-webkit-background-clip: text) {
+  .header__title {
+    color: currentColor;
+  }
+}
