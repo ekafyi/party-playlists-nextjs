@@ -12,7 +12,7 @@ export const Home = (): JSX.Element => (
 
     <HomeHeader />
     <main>
-      <strong className="title text-center font-bold text-4xl md:text-6xl mb-6">
+      <strong className="title text-center font-bold text-4xl md:text-6xl mb-6 font-hand">
         Welcome to <a href="https://nextjs.org">Next.js!</a>
       </strong>
 
