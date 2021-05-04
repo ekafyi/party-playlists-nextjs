@@ -1,16 +1,13 @@
-import Head from "next/head";
 import Image from "next/image";
 import * as React from "react";
-import { HomeHeader } from "../ui";
+import { HomeHeader, MetaHead } from "../components";
+import { APP_NAME } from "../lib/constants";
 
 export const Home = (): JSX.Element => (
   <div className="container">
-    <Head>
-      <title>Create Next App</title>
-      <link rel="icon" href="/favicon.ico" />
-    </Head>
-
+    <MetaHead titleKey="homePage" title={APP_NAME} url={process.env.URL} />
     <HomeHeader />
+
     <main>
       <strong className="title text-center font-bold text-4xl md:text-6xl mb-6 font-hand">
         Welcome to <a href="https://nextjs.org">Next.js!</a>
