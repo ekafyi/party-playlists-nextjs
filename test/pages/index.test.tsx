@@ -1,5 +1,5 @@
 import React from "react";
-import { Home } from "../../pages/index";
+import { Home } from "../../src/pages/index";
 import { fireEvent, render } from "../testUtils";
 
 describe("Home page", () => {
