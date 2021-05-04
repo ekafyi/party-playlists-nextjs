@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Note: If not adding custom global styles, import "tailwindcss/tailwind.css" from _app.tsx instead */
+
+@layer base {
+  html {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+  }
+}
+
+@layer components {
+}
+
+@layer utilities {
+  .u-cover-parent::after {
+    /* Note: parent must have the "position" property set. */
+    @apply absolute inset-0;
+    content: " ";
+  }
+}

@@ -10,15 +10,16 @@ export const Home = (): JSX.Element => (
     </Head>
 
     <main>
-      <h1 className="title">
+      <h1 className="title text-center font-bold text-4xl md:text-6xl mb-6">
         Welcome to <a href="https://nextjs.org">Next.js!</a>
       </h1>
 
-      <p className="description">
+      <p className="description text-center text-xl mb-8">
         Get started by editing <code>pages/index.tsx</code>
       </p>
 
       <button
+        className="flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
         onClick={() => {
           window.alert("With typescript and Jest");
         }}
@@ -114,22 +115,6 @@ export const Home = (): JSX.Element => (
       .title a:focus,
       .title a:active {
         text-decoration: underline;
-      }
-
-      .title {
-        margin: 0;
-        line-height: 1.15;
-        font-size: 4rem;
-      }
-
-      .title,
-      .description {
-        text-align: center;
-      }
-
-      .description {
-        line-height: 1.5;
-        font-size: 1.5rem;
       }
 
       code {
