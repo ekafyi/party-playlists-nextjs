@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 import * as React from "react";
-import { MetaHead } from "../components";
+import { BackLink, MetaHead, SinglePlaylist } from "../components";
 import { APP_NAME } from "../lib/constants";
 import { getPlaylistIdBySlug } from "../lib/slug-helpers";
 import samplePlaylist from "../sample-data/single-playlist.json";
@@ -9,10 +9,11 @@ const PlaylistPage: NextPage<{ playlist: SpotifyApi.PlaylistObjectFull }> = ({ p
   return (
     <>
       <MetaHead titleKey="slugPage" title={`${playlist.name} | ${APP_NAME}`} url={process.env.URL} />
-      <main>
-        <h1>{playlist.name}</h1>
+      <BackLink />
+      <SinglePlaylist playlist={playlist} />
+      {/* <h1>{playlist.name}</h1>
         <div>{JSON.stringify(playlist)}</div>
-      </main>
+      */}
     </>
   );
 };
