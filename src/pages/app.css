@@ -2,7 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Note: If not adding custom global styles, import "tailwindcss/tailwind.css" from _app.tsx instead */
+/*
+  If not adding custom global styles, import "tailwindcss/tailwind.css" from _app.tsx instead.
+  See: https://nextjs.org/docs/basic-features/built-in-css-support#import-styles-from-node_modules
+  */
 
 @layer base {
   html {
@@ -16,12 +19,17 @@
 }
 
 @layer components {
-}
-
-@layer utilities {
-  .u-cover-parent::after {
-    /* Note: parent must have the "position" property set. */
+  /* Used eg. in aspect ratio element parent */
+  .common-full-image {
+    @apply object-cover w-full h-full;
+  }
+  /* Used eg. in links in cards to make the entire card clickable */
+  /* Note: parent must have the "position" property set. */
+  .common-cover-parent::after {
     @apply absolute inset-0;
     content: " ";
   }
+}
+
+@layer utilities {
 }

@@ -1,0 +1,23 @@
+.card {
+  @apply bg-gray-50 hover:bg-purple-100 rounded relative p-2 sm:p-4 hover:shadow-xl duration-500;
+}
+
+.card__title {
+  @apply text-base font-bold truncate mb-1;
+}
+
+.card__subtitle {
+  @apply text-gray-700 text-xs line-clamp-2 mb-1;
+}
+
+.card__artwork {
+  @apply aspect-w-1 aspect-h-1 mb-2 md:mb-4 shadow duration-500;
+}
+
+.card:hover .card__artwork {
+  @apply shadow-lg;
+}
+
+.card__artwork img {
+  @apply bg-gray-200 rounded-sm;
+}
