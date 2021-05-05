@@ -1,3 +1,4 @@
+import { Track } from "../components";
 import { getMediumImage } from "../lib/get-spotify-image";
 import { replaceUnicode } from "../lib/str-helpers";
 import styles from "./SinglePlaylist.module.css";
@@ -32,9 +33,9 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
       </header>
       <section className={styles.playlist__tracks} aria-label="tracks">
         {/* {JSON.stringify(playlist.tracks.items)} */}
-        {/* {playlist.tracks.items.map(({ track, added_by }, index) => (
-          <TrackInList key={track.name} track={track} adder={added_by} count={index + 1} />
-        ))} */}
+        {playlist.tracks.items.map(({ track, added_by }, index) => (
+          <Track key={track.name} track={track} adder={added_by} trackNum={index + 1} />
+        ))}
       </section>
     </main>
   );

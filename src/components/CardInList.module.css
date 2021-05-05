@@ -21,3 +21,7 @@
 .card__artwork img {
   @apply bg-gray-200 rounded-sm;
 }
+
+.card a {
+  @apply block focus:outline-none focus:ring;
+}

@@ -11,9 +11,6 @@ const PlaylistPage: NextPage<{ playlist: SpotifyApi.PlaylistObjectFull }> = ({ p
       <MetaHead titleKey="slugPage" title={`${playlist.name} | ${APP_NAME}`} url={process.env.URL} />
       <BackLink />
       <SinglePlaylist playlist={playlist} />
-      {/* <h1>{playlist.name}</h1>
-        <div>{JSON.stringify(playlist)}</div>
-      */}
     </>
   );
 };

@@ -1,0 +1,89 @@
+.track {
+  @apply grid gap-x-2 items-start border-b py-2 px-2 relative hover:bg-gray-100 focus:bg-gray-100 focus:outline-black transition duration-500;
+  --thumb-container-w: 3.5rem;
+  grid-template-columns: max-content var(--thumb-container-w) minmax(0, 1fr);
+}
+
+.track__num {
+  @apply text-blue-600 text-base sm:text-xl font-hand w-8 sm:w-10 md:w-12 sm:pr-2 text-center pt-2;
+}
+
+.track__artwork {
+  @apply w-11 h-11 md:w-14 md:h-14 mr-8 rounded-md shadow;
+}
+
+.track:hover .track__artwork {
+  @apply shadow-lg;
+}
+
+.track__artwork img {
+  @apply bg-gray-200 rounded-md;
+}
+
+.track__title {
+  @apply text-lg sm:text-xl xl:text-2xl leading-tight font-medium truncate;
+}
+
+.track__artist {
+  @apply text-gray-700 text-sm sm:text-base leading-tight pt-0.5 truncate;
+}
+
+.track__adder {
+  @apply text-blue-600 text-xs sm:text-sm leading-loose sm:leading-loose font-hand;
+}
+
+.track__adder a {
+  @apply border-b border-current hover:border-transparent focus:outline-none focus:ring;
+}
+
+@media (min-width: 640px) {
+  .track {
+    --thumb-container-w: 4.5rem;
+  }
+}
+
+@media (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .track__bylineContainer {
+    @apply h-7 overflow-hidden relative;
+    --delay-duration-1: 0.3s;
+    --delay-duration-2: 0.4s;
+  }
+
+  .track__bylineContainer > * {
+    @apply h-full absolute;
+  }
+
+  .track__artist {
+    transition: all var(--delay-duration-2) ease-in-out;
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  .track__adder {
+    transition: transform 0.2s ease-in-out var(--delay-duration-1), opacity 0.2s;
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  .track:hover .track__artist,
+  .track:focus-within .track__artist {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  .track:hover .track__adder,
+  .track:focus-within .track__adder {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+
+  .track__adder:focus-within {
+    opacity: 1;
+  }
+}
+
+/*
+More info about pointer:fine media query
+- https://css-tricks.com/touch-devices-not-judged-size/
+- https://ferie.medium.com/detect-a-touch-device-with-only-css-9f8e30fa1134
+ */
