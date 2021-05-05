@@ -8,5 +8,4 @@ export const TRANSPARENT_PX_IMG =
 
 // Options for Spotify API playlist requests
 export const MINIMUM_FIELDS_PARAM = `description,images,name,id`;
-export const DEFAULT_FIELDS_PARAM = `description,images,name,tracks.items(track(id,name,artists(name),album(name,images)))`;
 export const COMPLETE_FIELDS_PARAM = `description,images,name,tracks.items(added_by,track(id,name,artists(name),album(name,images)))`;
