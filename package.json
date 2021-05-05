@@ -29,7 +29,8 @@
     "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "slugify": "^1.5.1"
+    "slugify": "^1.5.1",
+    "spotify-web-api-node": "^5.0.2"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.2.0",
@@ -39,6 +40,7 @@
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.4",
     "@types/spotify-api": "^0.0.8",
+    "@types/spotify-web-api-node": "^5.0.2",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "autoprefixer": "^10.2.5",

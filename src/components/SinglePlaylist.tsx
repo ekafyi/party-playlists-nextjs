@@ -1,10 +1,8 @@
 import { Track } from "../components";
 import { getMediumImage } from "../lib/get-spotify-image";
 import { replaceUnicode } from "../lib/str-helpers";
+import type { Optional } from "../lib/type-helpers";
 import styles from "./SinglePlaylist.module.css";
-
-// From https://github.com/Microsoft/TypeScript/issues/25760#issuecomment-614417742
-type Optional<T, K extends keyof T> = Omit<T, K> & Partial<T>;
 
 interface ISinglePlaylistProps {
   playlist: Optional<SpotifyApi.PlaylistObjectFull, | "collaborative" | "id" | "owner" | "public" | "followers" | "snapshot_id" | "type" | "href" | "uri" | "external_urls">; // prettier-ignore
