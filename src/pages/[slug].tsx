@@ -21,7 +21,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   if (!params || typeof params.slug !== "string" || !process.env.PLAYLIST_IDS) return { notFound: true };
 
   // Use hardcoded sample data on dev.
-  if (!process.env.URL && !process.env.CONTEXT) {
+  if (process.env.DEV_USE_SAMPLE_DATA) {
     const playlist = samplePlaylist;
     return { props: { playlist } };
   }

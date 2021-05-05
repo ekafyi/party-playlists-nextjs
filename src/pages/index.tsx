@@ -1,13 +1,15 @@
 import { GetStaticProps, NextPage } from "next";
 import * as React from "react";
+import SpotifyWebApi from "spotify-web-api-node";
 import { CardInList, HomeHeader, MetaHead } from "../components";
-import { APP_NAME } from "../lib/constants";
+import { APP_NAME, MINIMUM_FIELDS_PARAM } from "../lib/constants";
 import { buildSlug } from "../lib/slug-helpers";
 import { replaceUnicode } from "../lib/str-helpers";
+import { assertFulfilled } from "../lib/type-helpers";
 import samplePlaylists from "../sample-data/playlists.json";
 
 /** Playlist object with slug for single playlist route */
-interface IPlaylistWithSlug extends SpotifyApi.PlaylistObjectSimplified {
+interface IPlaylistWithSlug extends SpotifyApi.SinglePlaylistResponse {
   slug: string;
 }
 
@@ -37,8 +39,10 @@ export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists 
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Use hardcoded sample data on dev.
-  if (!process.env.URL && !process.env.CONTEXT) {
+  // Don't proceed if no playlist ids.
+  if (!process.env.PLAYLIST_IDS || !process.env.PLAYLIST_IDS.length) return { props: {} };
+
+  if (process.env.DEV_USE_SAMPLE_DATA) {
     const playlists = samplePlaylists.playlists.map((playlist) => ({
       ...playlist,
       slug: buildSlug(playlist),
@@ -47,11 +51,37 @@ export const getStaticProps: GetStaticProps = async () => {
     return { props: { playlists } };
   }
 
-  const playlistIds = process.env.PLAYLIST_IDS?.split(",") || [];
-  console.log("playlistIds ", playlistIds);
+  const spotifyApi = new SpotifyWebApi({
+    clientId: process.env.SPOTIFY_CLIENT_ID,
+    clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
+  });
 
-  // TODO fetch real data
-  return { props: {} };
+  return spotifyApi
+    .clientCredentialsGrant()
+    .then((data) => {
+      // console.log("🔒 access token" + data.body["access_token"]);
+      spotifyApi.setAccessToken(data.body["access_token"]);
+
+      // Build an array of playlist requests
+      const playlistIds = process.env.PLAYLIST_IDS.split(",") || [];
+      const promises = playlistIds.map((playlistId) =>
+        spotifyApi.getPlaylist(playlistId, { fields: MINIMUM_FIELDS_PARAM })
+      );
+      return Promise.allSettled(promises);
+    })
+    .then((res) => {
+      const playlists = res
+        .filter(assertFulfilled)
+        .map((res) => res.value.body)
+        .map((playlist) => ({ ...playlist, slug: buildSlug(playlist), id: null }));
+
+      return { props: { playlists } };
+    })
+    .catch((err) => {
+      console.log("😾😾");
+      console.error(err.response || err.code || err);
+      return { props: {} };
+    });
 };
 
 export default Home;
