@@ -14,12 +14,12 @@ export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists 
   <div className="container">
     <MetaHead titleKey="homePage" title={APP_NAME} url={process.env.URL} />
     <HomeHeader />
-    {playlists ? <div>{JSON.stringify(playlists)}</div> : <div>no playlists found</div>}
+    {playlists ? <div>{JSON.stringify(playlists)}</div> : <div>error getting playlists</div>}
   </div>
 );
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Use hardcoded sample data on dev to save time and requests.
+  // Use hardcoded sample data on dev.
   if (!process.env.URL && !process.env.CONTEXT) {
     const playlists = samplePlaylists.playlists.map((playlist) => ({
       ...playlist,
@@ -29,7 +29,11 @@ export const getStaticProps: GetStaticProps = async () => {
     return { props: { playlists } };
   }
 
+  const playlistIds = process.env.PLAYLIST_IDS?.split(",") || [];
+  console.log("playlistIds ", playlistIds);
+
   // TODO fetch real data
+  return { props: {} };
 };
 
 export default Home;
