@@ -3133,11 +3133,6 @@ internal-slot@^1.0.3:
     has "^1.0.3"
     side-channel "^1.0.4"
 
-intersection-observer@^0.5.1:
-  version "0.5.1"
-  resolved "https://registry.yarnpkg.com/intersection-observer/-/intersection-observer-0.5.1.tgz#e340fc56ce74290fe2b2394d1ce88c4353ac6dfa"
-  integrity sha512-Zd7Plneq82kiXFixs7bX62YnuZ0BMRci9br7io88LwDyF3V43cQMI+G5IiTlTNTt+LsDUppl19J/M2Fp9UkH6g==
-
 is-accessor-descriptor@^0.1.6:
   version "0.1.6"
   resolved "https://registry.yarnpkg.com/is-accessor-descriptor/-/is-accessor-descriptor-0.1.6.tgz#a9e12cb3ae8d876727eeef3843f8a0897b5c98d6"
@@ -5226,13 +5221,6 @@ react-refresh@0.8.3:
   version "0.8.3"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
-
-react-simple-img@^2.3.9:
-  version "2.3.9"
-  resolved "https://registry.yarnpkg.com/react-simple-img/-/react-simple-img-2.3.9.tgz#d7cb230b4ace1928ab7b0b2f3ec9b23c03339c2e"
-  integrity sha512-h+WLq8+qwN7KxvzXDwIG22dB+WLrb4gIGtux5o4v9j8Be4G0NqcsJbgKwoHblC0qlPGUpFfeUhkEQN6zSX39jg==
-  dependencies:
-    intersection-observer "^0.5.1"
 
 react@^17.0.1:
   version "17.0.2"
