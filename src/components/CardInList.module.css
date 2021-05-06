@@ -11,7 +11,8 @@
 }
 
 .card__artwork {
-  @apply aspect-w-1 aspect-h-1 mb-2 md:mb-4 shadow duration-500;
+  @apply bg-gray-200 mb-2 md:mb-4 shadow duration-500 relative;
+  padding-bottom: 100%;
 }
 
 .card:hover .card__artwork {
@@ -19,7 +20,8 @@
 }
 
 .card__artwork img {
-  @apply bg-gray-200 rounded-sm object-cover w-full h-full;
+  @apply rounded-sm transition-opacity object-cover w-full h-full absolute inset-0;
+  transition-duration: 1s;
 }
 
 .card a {
