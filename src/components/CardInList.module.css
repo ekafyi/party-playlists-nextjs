@@ -23,6 +23,10 @@
   transition-duration: 1s;
 }
 
+.card__artwork + .card__artwork {
+  display: none;
+}
+
 .card a {
   @apply block focus:outline-none focus:ring;
 }

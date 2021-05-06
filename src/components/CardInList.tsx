@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";
-import { TRANSPARENT_PX_IMG } from "../lib/constants";
+import { HOME_THUMB_SIZES, TRANSPARENT_PX_IMG } from "../lib/constants";
 import { getMediumImage } from "../lib/get-spotify-image";
 import styles from "./CardInList.module.css";
 
@@ -17,12 +17,6 @@ interface ICardInListProps {
 const InView = dynamic(() => import("react-intersection-observer").then((obs) => obs.InView), {
   ssr: false,
 });
-
-const sizes = `(min-width: 576px) 16rem,
-              (min-width: 768px) calc(33vw - 1.5rem),
-              (min-width: 1024px) calc(25vw - 2rem),
-              (min-width: 1140px) 14.375rem,
-              calc(50vw - 2rem)`;
 
 const srcSet = `https://mosaic.scdn.co/640/ab67616d0000b2730ef84b82816687fc634c4910ab67616d0000b2735ddbd61ea4a6dab213cc97afab67616d0000b273aaac5479cd9db05e896db80fab67616d0000b273f9fe3333babc806530a8545a 640w, https://mosaic.scdn.co/300/ab67616d0000b2730ef84b82816687fc634c4910ab67616d0000b2735ddbd61ea4a6dab213cc97afab67616d0000b273aaac5479cd9db05e896db80fab67616d0000b273f9fe3333babc806530a8545a 300w`;
 
@@ -41,7 +35,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
                   src={inView ? getMediumImage(images).url : TRANSPARENT_PX_IMG}
                   className={inView ? "opacity-100" : "opacity-0"}
                   srcSet={srcSet}
-                  sizes={sizes}
+                  sizes={HOME_THUMB_SIZES}
                   alt=""
                   width="200"
                   height="200"
@@ -49,6 +43,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
               </div>
             )}
           </InView>
+          <div aria-hidden="true" className={`pb-full ${styles.card__artwork}`} />
           <noscript>
             <div className={`pb-full ${styles.card__artwork}`}>
               <img src={getMediumImage(images).url} alt="" width="200" height="200" />
