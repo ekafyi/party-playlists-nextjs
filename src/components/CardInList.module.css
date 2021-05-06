@@ -19,7 +19,7 @@
 }
 
 .card__artwork img {
-  @apply bg-gray-200 rounded-sm;
+  @apply bg-gray-200 rounded-sm object-cover w-full h-full;
 }
 
 .card a {

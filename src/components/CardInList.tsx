@@ -30,9 +30,9 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
           </div> */}
           <SimpleImg
             src={getMediumImage(images).url}
-            className="common-full-image"
-            width={200}
-            height={200}
+            className={styles.card__artwork}
+            width="200"
+            height="200"
             applyAspectRatio={true}
             placeholder={TRANSPARENT_PX_IMG}
           />
