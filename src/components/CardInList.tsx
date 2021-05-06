@@ -1,11 +1,16 @@
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";
-import { useInView } from "react-intersection-observer";
+// import { InView } from "react-intersection-observer";
 import { TRANSPARENT_PX_IMG } from "../lib/constants";
 import { getMediumImage } from "../lib/get-spotify-image";
 import styles from "./CardInList.module.css";
 // import dynamic from "next/dynamic";
 // import { getMediumImage } from "../lib/get-spotify-image";
+
+const InView = dynamic(() => import("react-intersection-observer").then((obs) => obs.InView), {
+  ssr: false,
+});
 
 interface ICardInListProps {
   title: string;
@@ -19,25 +24,28 @@ interface ICardInListProps {
 const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
   const { title, subtitle, images, slug } = props;
 
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    rootMargin: "0px 0px 0px 0px",
-    // rootMargin: "0px 0px -200px 0px", // !! TEMPORARY, just to check the animation
-  });
-
   return (
-    <article className={styles.card} ref={ref}>
+    <article className={styles.card}>
+      <noscript>
+        <div className={`pb-full ${styles.card__artwork}`}>
+          <img src={getMediumImage(images).url} alt="" width="200" height="200" />
+        </div>
+      </noscript>
       {images.length ? (
         <>
-          <div className={styles.card__artwork}>
-            <img
-              src={inView ? getMediumImage(images).url : TRANSPARENT_PX_IMG}
-              className={inView ? "opacity-100" : "opacity-0"}
-              alt=""
-              width="200"
-              height="200"
-            />
-          </div>
+          <InView>
+            {({ inView, ref }) => (
+              <div className={`pb-full ${styles.card__artwork}`} ref={ref}>
+                <img
+                  src={inView ? getMediumImage(images).url : TRANSPARENT_PX_IMG}
+                  className={inView ? "opacity-100" : "opacity-0"}
+                  alt=""
+                  width="200"
+                  height="200"
+                />
+              </div>
+            )}
+          </InView>
         </>
       ) : (
         <img aria-hidden="true" src={TRANSPARENT_PX_IMG} />

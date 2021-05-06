@@ -1,5 +1,5 @@
 .card {
-  @apply bg-gray-50 hover:bg-purple-100 rounded relative p-2 sm:p-4 hover:shadow-xl duration-500;
+  @apply bg-gray-50 hover:bg-purple-100 rounded relative p-2 sm:p-4 hover:shadow-xl transition duration-500;
 }
 
 .card__title {
@@ -12,7 +12,7 @@
 
 .card__artwork {
   @apply bg-gray-200 mb-2 md:mb-4 shadow duration-500 relative;
-  padding-bottom: 100%;
+  min-height: 12rem;
 }
 
 .card:hover .card__artwork {
