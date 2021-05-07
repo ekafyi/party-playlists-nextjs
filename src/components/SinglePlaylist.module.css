@@ -7,11 +7,13 @@
 }
 
 .playlist__artwork {
-  @apply w-40 h-40 sm:w-full sm:h-full sm:mb-6 rounded-lg shadow-md aspect-w-1 aspect-h-1;
+  @apply w-40 h-40 sm:w-full sm:h-full sm:mb-6 rounded-lg shadow-md;
+  padding-bottom: 100%;
+  position: relative;
 }
 
 .playlist__artwork img {
-  @apply rounded-lg object-cover w-full h-full;
+  @apply rounded-lg object-cover absolute inset-0 w-full h-full;
 }
 
 .playlist__header {
