@@ -12,12 +12,17 @@
   @apply w-11 h-11 md:w-14 md:h-14 mr-8 rounded-md shadow;
 }
 
+.track__artwork + .track__artwork {
+  display: none;
+}
+
 .track:hover .track__artwork {
   @apply shadow-lg;
 }
 
 .track__artwork img {
-  @apply bg-gray-200 rounded-md;
+  @apply rounded-md transition-opacity object-cover;
+  transition-duration: 1s;
 }
 
 .track__title {

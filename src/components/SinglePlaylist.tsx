@@ -17,7 +17,6 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
           <div className={styles.playlist__artwork}>
             <img
               src={getMediumImage(playlist.images)?.url || TRANSPARENT_PX_IMG}
-              className="common-full-image"
               sizes={PLAYLIST_THUMB_SIZES}
               srcSet={buildSrcSet(playlist.images)}
               alt=""

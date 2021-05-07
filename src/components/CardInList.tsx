@@ -49,7 +49,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
           </noscript>
         </>
       ) : (
-        <img aria-hidden="true" src={TRANSPARENT_PX_IMG} />
+        <img aria-hidden="true" src={TRANSPARENT_PX_IMG} width="200" height="200" />
       )}
       <Link href={slug} passHref>
         <a className="common-cover-parent">

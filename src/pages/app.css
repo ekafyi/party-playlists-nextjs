@@ -29,10 +29,6 @@
 }
 
 @layer components {
-  /* Used eg. in aspect ratio element parent */
-  .common-full-image {
-    @apply object-cover w-full h-full;
-  }
   /* Used eg. in links in cards to make the entire card clickable */
   /* Note: parent must have the "position" property set. */
   .common-cover-parent::after {

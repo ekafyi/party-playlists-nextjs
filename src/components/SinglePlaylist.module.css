@@ -11,7 +11,7 @@
 }
 
 .playlist__artwork img {
-  @apply rounded-lg;
+  @apply rounded-lg object-cover w-full h-full;
 }
 
 .playlist__header {
