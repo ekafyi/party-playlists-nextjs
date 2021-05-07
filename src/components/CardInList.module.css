@@ -1,5 +1,5 @@
 .card {
-  @apply bg-gray-50 hover:bg-purple-100 rounded relative p-2 sm:p-4 hover:shadow-xl duration-500;
+  @apply bg-gray-50 hover:bg-purple-100 rounded relative p-2 sm:p-4 hover:shadow-xl;
 }
 
 .card__title {
@@ -11,7 +11,9 @@
 }
 
 .card__artwork {
-  @apply aspect-w-1 aspect-h-1 mb-2 md:mb-4 shadow duration-500;
+  @apply bg-gray-200 mb-2 md:mb-4 shadow;
+  padding-bottom: 100%;
+  position: relative;
 }
 
 .card:hover .card__artwork {
@@ -19,9 +21,19 @@
 }
 
 .card__artwork img {
-  @apply bg-gray-200 rounded-sm;
+  @apply rounded-sm transition-opacity object-cover absolute inset-0 w-full h-full;
+  transition-duration: 1s;
+}
+
+.card__artwork + .card__artwork {
+  display: none;
 }
 
 .card a {
   @apply block focus:outline-none focus:ring;
+}
+
+.card,
+.card__artwork {
+  @apply transition duration-500;
 }

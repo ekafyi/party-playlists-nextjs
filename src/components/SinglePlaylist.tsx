@@ -1,5 +1,6 @@
 import { Track } from "../components";
-import { getMediumImage } from "../lib/get-spotify-image";
+import { PLAYLIST_THUMB_SIZES, TRANSPARENT_PX_IMG } from "../lib/constants";
+import { buildSrcSet, getMediumImage } from "../lib/get-spotify-image";
 import { replaceUnicode } from "../lib/str-helpers";
 import type { Optional } from "../lib/type-helpers";
 import styles from "./SinglePlaylist.module.css";
@@ -15,8 +16,9 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
         <div className="sticky top-6">
           <div className={styles.playlist__artwork}>
             <img
-              src={getMediumImage(playlist.images)?.url}
-              className="common-full-image"
+              src={getMediumImage(playlist.images)?.url || TRANSPARENT_PX_IMG}
+              sizes={PLAYLIST_THUMB_SIZES}
+              srcSet={buildSrcSet(playlist.images)}
               alt=""
               width="300"
               height="300"

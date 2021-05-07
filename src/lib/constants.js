@@ -9,3 +9,10 @@ export const TRANSPARENT_PX_IMG =
 // Options for Spotify API playlist requests
 export const MINIMUM_FIELDS_PARAM = `description,images,name,id`;
 export const COMPLETE_FIELDS_PARAM = `description,images,name,tracks.items(added_by,track(id,name,artists(name),album(name,images)))`;
+
+export const HOME_THUMB_SIZES = `(min-width: 576px) 16rem,
+              (min-width: 768px) calc(33vw - 1.5rem),
+              (min-width: 1024px) calc(25vw - 2rem),
+              (min-width: 1140px) 14.375rem,
+              calc(50vw - 2rem)`;
+export const PLAYLIST_THUMB_SIZES = `(min-width: 640px) 12rem, (min-width: 1024px) 16rem, 10rem`;
