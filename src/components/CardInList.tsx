@@ -34,6 +34,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
             {({ inView, ref }) => (
               <div className={styles.card__artwork} ref={ref}>
                 <Img
+                  crossOrigin="anonymous"
                   src={inView ? getMediumImage(images).url : TRANSPARENT_PX_IMG}
                   className={inView ? "opacity-100" : "opacity-0"}
                   srcSet={buildSrcSet(images)}

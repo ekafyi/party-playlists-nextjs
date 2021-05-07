@@ -27,6 +27,7 @@ const Track: React.FunctionComponent<ITrackProps> = ({ track, adder, trackNum })
           {({ inView, ref }) => (
             <div className={styles.track__artwork} ref={ref}>
               <img
+                crossOrigin="anonymous"
                 src={inView ? getSmallestImage(track.album.images).url : TRANSPARENT_PX_IMG}
                 className={inView ? "opacity-100" : "opacity-0"}
                 alt=""
