@@ -23,7 +23,7 @@ const Track: React.FunctionComponent<ITrackProps> = ({ track, adder, trackNum })
       <>
         {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
         {/* @ts-ignore */}
-        <InView rootMargin="0px 0px 40px 0px">
+        <InView rootMargin="0px 0px 40px 0px" triggerOnce={true}>
           {({ inView, ref }) => (
             <div className={styles.track__artwork} ref={ref}>
               <img

@@ -30,7 +30,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
         <>
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
-          <InView rootMargin="0px 0px 40px 0px">
+          <InView rootMargin="0px 0px 40px 0px" triggerOnce={true}>
             {({ inView, ref }) => (
               <div className={styles.card__artwork} ref={ref}>
                 <Img
