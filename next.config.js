@@ -16,13 +16,13 @@ const pwaConfig = {
       },
     },
     {
-      urlPattern: /^https:\/\/(?:i|mosaic)\.scdn\.com\/.*/i,
+      urlPattern: /^https:\/\/(?:i|mosaic)\.scdn\.co\/.*/i,
       handler: "CacheFirst",
       options: {
         cacheName: "spotify-images",
         expiration: {
           maxEntries: 32,
-          maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
         },
       },
     },
@@ -33,7 +33,7 @@ const pwaConfig = {
         cacheName: "static-images",
         expiration: {
           maxEntries: 32,
-          maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
         },
       },
     },
@@ -44,7 +44,7 @@ const pwaConfig = {
         cacheName: "static-audio",
         expiration: {
           maxEntries: 32,
-          maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+          maxAgeSeconds: 30 * 24 * 60 * 60, // 30 days
         },
       },
     },
@@ -77,7 +77,7 @@ const pwaConfig = {
         cacheName: "next-data",
         expiration: {
           maxEntries: 32,
-          maxAgeSeconds: 7 * 24 * 60 * 60, // 7 days
+          maxAgeSeconds: 24 * 60 * 60, // 24 hours
         },
       },
     },
