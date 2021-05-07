@@ -11,7 +11,8 @@
 }
 
 .card__artwork {
-  @apply bg-gray-200 mb-2 md:mb-4 shadow relative;
+  @apply bg-gray-200 mb-2 md:mb-4 shadow aspect-w-1 aspect-h-1;
+  padding-bottom: 100%;
 }
 
 .card:hover .card__artwork {
@@ -19,7 +20,7 @@
 }
 
 .card__artwork img {
-  @apply rounded-sm transition-opacity object-cover w-full h-full absolute inset-0;
+  @apply rounded-sm transition-opacity object-cover;
   transition-duration: 1s;
 }
 

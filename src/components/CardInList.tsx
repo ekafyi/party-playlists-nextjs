@@ -30,9 +30,9 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
         <>
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
-          <InView rootMargin="0px 0px 50px 0px">
+          <InView rootMargin="0px 0px 40px 0px">
             {({ inView, ref }) => (
-              <div className={`pb-full ${styles.card__artwork}`} ref={ref}>
+              <div className={styles.card__artwork} ref={ref}>
                 <Img
                   src={inView ? getMediumImage(images).url : TRANSPARENT_PX_IMG}
                   className={inView ? "opacity-100" : "opacity-0"}
@@ -41,9 +41,9 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
               </div>
             )}
           </InView>
-          <div aria-hidden="true" className={`pb-full ${styles.card__artwork}`} />
+          <div aria-hidden="true" className={styles.card__artwork} />
           <noscript>
-            <div className={`pb-full ${styles.card__artwork}`}>
+            <div className={styles.card__artwork}>
               <Img src={getMediumImage(images).url} srcSet={buildSrcSet(images)} />
             </div>
           </noscript>

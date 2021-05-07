@@ -42,7 +42,4 @@
 }
 
 @layer utilities {
-  .pb-full {
-    padding-bottom: 100%;
-  }
 }
