@@ -7,9 +7,7 @@
 }
 
 .playlist__artwork {
-  @apply w-40 h-40 sm:w-full sm:h-full sm:mb-6 rounded-lg shadow-md;
-  padding-bottom: 100%;
-  position: relative;
+  @apply w-40 h-40 pb-40 sm:w-full sm:h-full sm:mb-6 rounded-lg shadow-md relative;
 }
 
 .playlist__artwork img {
@@ -27,6 +25,10 @@
 @media (min-width: 640px) {
   .playlist {
     grid-template-columns: 12rem minmax(0, 1fr);
+  }
+
+  .playlist__artwork {
+    padding-bottom: 100%;
   }
 
   .playlist__header {
