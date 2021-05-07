@@ -7,7 +7,7 @@
 }
 
 .playlist__artwork {
-  @apply w-40 h-40 sm:w-full sm:h-full sm:mb-6 rounded-lg shadow-md;
+  @apply w-40 h-40 sm:w-full sm:h-full sm:mb-6 rounded-lg shadow-md aspect-w-1 aspect-h-1;
 }
 
 .playlist__artwork img {
