@@ -1,9 +1,12 @@
+import { RWebShare } from "react-web-share";
 import { Track } from "../components";
 import { PLAYLIST_THUMB_SIZES, TRANSPARENT_PX_IMG } from "../lib/constants";
 import { buildSrcSet, getMediumImage } from "../lib/get-spotify-image";
 import { replaceUnicode } from "../lib/str-helpers";
 import type { Optional } from "../lib/type-helpers";
 import styles from "./SinglePlaylist.module.css";
+
+// import { RWebShare } from "react-web-share";
 
 interface ISinglePlaylistProps {
   playlist: Optional<SpotifyApi.PlaylistObjectFull, | "collaborative" | "id" | "owner" | "public" | "followers" | "snapshot_id" | "type" | "href" | "uri" | "external_urls">; // prettier-ignore
@@ -13,7 +16,7 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
   return (
     <main className={styles.playlist}>
       <div className={styles.playlist__artworkContainer}>
-        <div className="sticky top-6">
+        <div className="sticky top-6 flex items-end sm:block">
           <div className={styles.playlist__artwork}>
             <img
               src={getMediumImage(playlist.images)?.url || TRANSPARENT_PX_IMG}
@@ -24,7 +27,18 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
               height="300"
             />
           </div>
-          {/* some CTA here maybe (share, copy playlist etc) */}
+          {/* FIXME */}
+          <RWebShare
+            data={{
+              text: "",
+              url: window.location.href || process.env.URL,
+              title: playlist.name,
+            }}
+            onClick={() => console.log("shared successfully!")}
+          >
+            <button className="text-sm font-medium px-2 py-2 rounded hover:bg-gray-50 ml-4 sm:ml-0">Share</button>
+          </RWebShare>
+          {/* // */}
         </div>
       </div>
       <header className={styles.playlist__header}>
