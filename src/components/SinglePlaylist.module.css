@@ -1,21 +1,33 @@
 .playlist {
   @apply bg-white rounded-lg shadow m-2 sm:m-4 p-4 gap-y-4 gap-x-6 md:gap-x-10 md:px-6 md:py-8 lg:p-12 lg:m-8 xl:gap-x-14 grid;
+  /* When left-col-w variable is not defined, it's not considered a column (ie. we get a one-column grid) */
+  grid-template-columns: var(--left-col-w) minmax(0, 1fr);
 }
 
 .playlist__title {
-  @apply font-extrabold text-3xl sm:text-5xl lg:text-6xl xl:text-7xl mb-4 lg:mb-8;
+  @apply font-extrabold text-2xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight mb-4 lg:mb-8;
 }
 
+.playlist__desc {
+  @apply text-gray-700 text-sm mb-2;
+}
+
+.playlist__meta {
+  @apply text-gray-700 text-xs;
+}
+
+.playlist__stickyContainer {
+  @apply sticky top-6 flex sm:block;
+}
+
+/* .playlist__artworkContainer {} */
+
 .playlist__artwork {
-  @apply w-40 h-40 pb-40 sm:w-full sm:h-full sm:mb-6 rounded-lg shadow-md relative;
+  @apply w-32 h-32 pb-32 sm:w-full sm:h-full sm:mb-6 rounded-lg shadow-md relative flex-none;
 }
 
 .playlist__artwork img {
   @apply rounded-lg object-cover absolute inset-0 w-full h-full;
-}
-
-.playlist__header {
-  @apply col-span-full sm:pt-4 lg:pt-0;
 }
 
 .playlist__tracks {
@@ -24,21 +36,17 @@
 
 @media (min-width: 640px) {
   .playlist {
-    grid-template-columns: 12rem minmax(0, 1fr);
+    --left-col-w: 12rem;
   }
 
   .playlist__artwork {
     padding-bottom: 100%;
   }
-
-  .playlist__header {
-    grid-column: unset;
-  }
 }
 
 @media (min-width: 1024px) {
   .playlist {
-    grid-template-columns: 16rem minmax(0, 1fr);
+    --left-col-w: 16rem;
   }
 
   .playlist__artworkContainer {

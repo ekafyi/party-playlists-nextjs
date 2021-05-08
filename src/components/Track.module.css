@@ -1,6 +1,6 @@
 .track {
   @apply grid gap-x-2 items-start border-b py-2 px-2 relative hover:bg-gray-100 focus:bg-gray-100 focus:outline-black transition duration-500;
-  --thumb-container-w: 3.5rem;
+  --thumb-container-w: 3.25rem;
   grid-template-columns: max-content var(--thumb-container-w) minmax(0, 1fr);
 }
 
@@ -22,7 +22,7 @@
 
 .track__artwork img {
   @apply rounded-md transition-opacity object-cover;
-  transition-duration: 1s;
+  transition-duration: 0.75s;
 }
 
 .track__title {
