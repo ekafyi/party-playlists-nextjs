@@ -31,7 +31,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
         <>
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
           {/* @ts-ignore */}
-          <InView rootMargin="0px 0px 40px 0px" triggerOnce={true}>
+          <InView rootMargin="20px 20px 40px 20px" triggerOnce={true}>
             {({ inView, ref }) => (
               <motion.div layoutId={`thumb-${title}`} layout className={styles.card__artwork} ref={ref}>
                 <Img
