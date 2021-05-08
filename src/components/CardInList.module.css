@@ -22,7 +22,7 @@
 
 .card__artwork img {
   @apply rounded-sm transition-opacity object-cover absolute inset-0 w-full h-full;
-  transition-duration: 1s;
+  transition-duration: 0.75s;
 }
 
 .card__artwork + .card__artwork {

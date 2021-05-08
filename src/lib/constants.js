@@ -15,4 +15,4 @@ export const HOME_THUMB_SIZES = `(min-width: 576px) 16rem,
               (min-width: 1024px) calc(25vw - 2rem),
               (min-width: 1140px) 14.375rem,
               calc(50vw - 2rem)`;
-export const PLAYLIST_THUMB_SIZES = `(min-width: 640px) 12rem, (min-width: 1024px) 16rem, 10rem`;
+export const PLAYLIST_THUMB_SIZES = `(min-width: 640px) 12rem, (min-width: 1024px) 16rem, 8rem`;
