@@ -3,7 +3,7 @@ import dynamic from "next/dynamic";
 
 const RWebShare = dynamic(() => import("react-web-share").then((rws) => rws.RWebShare), {
   ssr: false,
-  loading: () => <ShareButton disabled="true" />,
+  // loading: () => <ShareButton disabled="true" />,
 });
 
 const ShareButton = (props) => (

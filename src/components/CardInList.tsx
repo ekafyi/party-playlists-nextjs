@@ -30,8 +30,12 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
   return (
     <motion.article
       layoutId={`card-${title}`}
-      initial={{ scale: 0.8, opacity: 0 }}
-      animate={{ scale: 1, opacity: 1 }}
+      layout
+      // initial={false}
+      // initial={{ opacity: 0 }}
+      // animate={{ opacity: 1 }}
+      // exit={{ opacity: 0 }}
+      transition={{ delay: 0.2 }}
       className={styles.card}
     >
       {images.length ? (
@@ -40,14 +44,14 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
           {/* @ts-ignore */}
           <InView rootMargin="0px 0px 40px 0px" triggerOnce={true}>
             {({ inView, ref }) => (
-              <div className={styles.card__artwork} ref={ref}>
+              <motion.div layoutId={`thumb-${title}`} className={styles.card__artwork} ref={ref}>
                 <Img
                   crossOrigin="anonymous"
                   src={inView ? getMediumImage(images).url : TRANSPARENT_PX_IMG}
                   className={inView ? "opacity-100" : "opacity-0"}
                   srcSet={buildSrcSet(images)}
                 />
-              </div>
+              </motion.div>
             )}
           </InView>
           <div aria-hidden="true" className={styles.card__artwork} />
@@ -66,17 +70,6 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
           <p className={styles.card__subtitle}>{subtitle || ""}</p>
         </a>
       </Link>
-
-      {/* FIXME */}
-      {/* <motion.h2
-        layoutId="foo"
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="bg-yellow-200 p-4"
-      >
-        woww very transition much interactive
-      </motion.h2> */}
-      {/* // */}
     </motion.article>
   );
 };
