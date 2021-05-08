@@ -1,9 +1,12 @@
+import { motion } from "framer-motion"; // eslint-ignore
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";
 import { HOME_THUMB_SIZES, TRANSPARENT_PX_IMG } from "../lib/constants";
 import { buildSrcSet, getMediumImage } from "../lib/get-spotify-image";
 import styles from "./CardInList.module.css";
+
+// import { motion } from "framer-motion";
 
 interface ICardInListProps {
   title: string;
@@ -25,7 +28,12 @@ const Img = (props) => {
 const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
   const { title, subtitle, images, slug } = props;
   return (
-    <article className={styles.card}>
+    <motion.article
+      layoutId={`card-${title}`}
+      initial={{ scale: 0.8, opacity: 0 }}
+      animate={{ scale: 1, opacity: 1 }}
+      className={styles.card}
+    >
       {images.length ? (
         <>
           {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
@@ -58,7 +66,18 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
           <p className={styles.card__subtitle}>{subtitle || ""}</p>
         </a>
       </Link>
-    </article>
+
+      {/* FIXME */}
+      {/* <motion.h2
+        layoutId="foo"
+        initial={{ scale: 0.8, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="bg-yellow-200 p-4"
+      >
+        woww very transition much interactive
+      </motion.h2> */}
+      {/* // */}
+    </motion.article>
   );
 };
 
