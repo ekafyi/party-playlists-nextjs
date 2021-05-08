@@ -35,8 +35,13 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
       <header className="pb-4">
         <h1 className={`${styles.playlist__title} sr-only sm:not-sr-only`}>{playlist.name}</h1>
         <p className={styles.playlist__desc}>{replaceUnicode(playlist.description || "")}</p>
-        {/* TODO add track count & playlist duration here */}
-        {/* <div className={styles.playlist__meta}>23 tracks, 1 hr 25 min</div> */}
+        {/* TODO (someday) add playlist duration */}
+        {/* https://gist.github.com/thelinmichael/5926997 */}
+        {playlist.tracks.items.length && (
+          <div className={styles.playlist__meta}>
+            {playlist.tracks.items.length} {playlist.tracks.items.length > 1 ? "tracks" : "track"}
+          </div>
+        )}
       </header>
       <section className={styles.playlist__tracks} aria-label="tracks">
         {playlist.tracks.items.map(({ track, added_by }, index) => (
