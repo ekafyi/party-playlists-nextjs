@@ -22,9 +22,14 @@ export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists 
       {playlists ? (
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 mb-8">
           {playlists.map((playlist) => (
-            <motion.div key={playlist.name} layoutId={`card-${playlist.name}`}>
+            <motion.div
+              key={playlist.name}
+              layoutId={`card-${playlist.name}`}
+              // ?? card should be above other cards when animating
+              animate={{ zIndex: 0 }}
+              initial={{ zIndex: 10 }}
+            >
               <CardInList
-                key={playlist.name}
                 title={playlist.name}
                 subtitle={replaceUnicode(playlist.description || "")}
                 slug={`/${playlist.slug}`}
