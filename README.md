@@ -37,7 +37,7 @@ PLAYLIST_IDS=
 # CONTEXT=production
 ```
 
-I use Netlify, which automatically adds the last two items in the config on their remote environment. I use `process.env.URL` in some parts of the code; search and modify as needed if you use a different service.
+I use Netlify, which automatically adds `URL` and `CONTEXT` on their remote environments. I use `process.env.URL` in some parts of the code; search and modify as needed if you use a different service.
 
 Lastly, make sure your remote environment configuration contains the same values. Refer to these docs if you use Netlify or Vercel:
 - https://docs.netlify.com/configure-builds/environment-variables/
