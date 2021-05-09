@@ -44,7 +44,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
                 </div>
               )}
             </InView>
-            <div aria-hidden="true" className={styles.card__artwork} />
+            <div aria-hidden="true" className={`${styles.card__artwork} nojs-hidden`} />
           </motion.div>
           <noscript>
             <div className={styles.card__artwork}>
