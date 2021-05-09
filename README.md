@@ -14,6 +14,35 @@ Built with:
 Lighthouse: https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Flistening-party.netlify.app%2F
 
 
+## Usage
+
+I made this for my own use, but feel free to fork/clone as a starter and make it your own.
+
+Make an `.env.local` file in your project root, which will be [loaded ](https://nextjs.org/docs/basic-features/environment-variables) by Next.js.
+
+```bash
+# Your Spotify developer app credentials
+# See: https://developer.spotify.com/documentation/general/guides/app-settings/
+SPOTIFY_CLIENT_ID=
+SPOTIFY_CLIENT_SECRET=
+
+# Comma separated IDs of the playlists you want to display
+PLAYLIST_IDS=
+
+# (Optional) Use local JSON file as data source
+# DEV_USE_SAMPLE_DATA=1
+
+# These are added by Netlify in their remote env config
+# URL=https://listening-party.netlify.app
+# CONTEXT=production
+```
+
+I use Netlify, which automatically adds the last two items in the config on their remote environment. I use `process.env.URL` in some parts of the code; search and modify as needed if you use a different service.
+
+Lastly, make sure your remote configuration reflects the local one. Refer to these docs if you use Netlify or Vercel:
+- https://docs.netlify.com/configure-builds/environment-variables/
+- https://vercel.com/docs/environment-variables
+
 ---
 
 Credits
