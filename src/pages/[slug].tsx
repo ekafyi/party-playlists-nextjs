@@ -12,7 +12,7 @@ const PlaylistPage: NextPage<{ playlist: SpotifyApi.PlaylistObjectFull }> = ({ p
     <>
       <MetaHead titleKey="slugPage" title={`${playlist.name} | ${APP_NAME}`} url={process.env.URL} />
       <BackLink />
-      <motion.div layoutId={`card-${playlist.name}`}>
+      <motion.div layoutId={`card-${playlist.name}`} initial="initial" animate="animate">
         <SinglePlaylist playlist={playlist} />
       </motion.div>
     </>

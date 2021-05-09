@@ -23,23 +23,7 @@ export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists 
         {playlists ? (
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 mb-8">
             {playlists.map((playlist) => (
-              <motion.div
-                key={playlist.name}
-                layoutId={`card-${playlist.name}`}
-                layout
-                // FIXME
-                // ? coba
-                onClick={(e) => console.log(e)}
-                animate={
-                  playlist.slug === "party-corgi-build-a-vibe-april-2021-1q4a"
-                    ? {
-                        position: ["absolute", "absolute", "relative"],
-                        filter: ["invert(1)", "invert(0.75)", "invert(0)"],
-                        transition: { times: [0, 2], duration: 5 },
-                      }
-                    : undefined
-                }
-              >
+              <motion.div layoutId={`card-${playlist.name}`} layout key={playlist.name}>
                 <CardInList
                   title={playlist.name}
                   subtitle={replaceUnicode(playlist.description || "")}

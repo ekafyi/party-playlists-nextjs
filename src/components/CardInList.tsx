@@ -55,14 +55,12 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
       ) : (
         <img aria-hidden="true" src={TRANSPARENT_PX_IMG} width="200" height="200" />
       )}
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }}>
-        <Link href={slug} passHref>
-          <a className="common-cover-parent">
-            <h2 className={styles.card__title}>{title}</h2>
-            <p className={styles.card__subtitle}>{subtitle || ""}</p>
-          </a>
-        </Link>
-      </motion.div>
+      <Link href={slug} passHref>
+        <a className="common-cover-parent">
+          <h2 className={styles.card__title}>{title}</h2>
+          <p className={styles.card__subtitle}>{subtitle || ""}</p>
+        </a>
+      </Link>
     </article>
   );
 };
