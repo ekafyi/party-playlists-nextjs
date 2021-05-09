@@ -1,6 +1,7 @@
 {
-  "name": "with-typescript-eslint-jest",
-  "author": "@erikdstock",
+  "name": "party-playlists-nextjs",
+  "author": "@ekafyi",
+  "description": "Source code for listening-party.netlify.app, created from Next.js starter with-typescript-eslint-jest by @erikdstock.",
   "license": "MIT",
   "version": "1.0.0",
   "scripts": {
