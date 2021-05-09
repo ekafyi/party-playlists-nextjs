@@ -11,6 +11,7 @@ Built with:
 - [Spotify Web API](https://developer.spotify.com/documentation/web-api/) via [spotify-web-api-node](https://github.com/thelinmichael/spotify-web-api-node)
 - ...and more
 
+Lighthouse: https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Flistening-party.netlify.app%2F
 
 
 ---
