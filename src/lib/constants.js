@@ -1,6 +1,7 @@
 export const APP_NAME = "The Party Corgi Listening Party";
 export const APP_DESCRIPTION = "Collaborative playlists from the #listening-party channel in the Party Corgi Discord";
-export const OG_IMG_FILENAME = "icon-512x512.png";
+export const OG_IMG_FILENAME = "icons/icon-512x512.png";
+export const OG_IMG_SIZE = "512";
 
 // From png-pixel.com
 export const TRANSPARENT_PX_IMG =

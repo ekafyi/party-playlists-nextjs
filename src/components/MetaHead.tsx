@@ -1,6 +1,5 @@
 import Head from "next/head";
-import { APP_DESCRIPTION } from "../lib/constants";
-// OG_IMG_FILENAME
+import { APP_DESCRIPTION, OG_IMG_FILENAME, OG_IMG_SIZE } from "../lib/constants";
 
 interface IMetaHead {
   titleKey?: string;
@@ -16,21 +15,26 @@ const MetaHead: React.FunctionComponent<IMetaHead> = ({ titleKey, title, descrip
     {/* <!-- SEO - Search bots general --> */}
     <meta itemProp="name" content={title} />
     <meta itemProp="description" content={description || APP_DESCRIPTION} />
-    {/* TODO opengraph image */}
-    {/* {url && <meta itemProp="image" content={`${url}${OG_IMG_FILENAME}`} />} */}
+    {url && <meta itemProp="image" content={`${url}${OG_IMG_FILENAME}`} />}
 
     {/* <!-- SEO - Facebook/OpenGraph --> */}
     {url && <meta property="og:url" content={url} />}
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description || APP_DESCRIPTION} />
-    {/* {url && <meta property="og:image" content={`${url}${OG_IMG_FILENAME}`} />} */}
+    {url && (
+      <>
+        <meta property="og:image" content={`${url}${OG_IMG_FILENAME}`} />
+        <meta property="og:image:width" content={OG_IMG_SIZE} />
+        <meta property="og:image:height" content={OG_IMG_SIZE} />
+      </>
+    )}
 
     {/* <!-- SEO - Twitter --> */}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description || APP_DESCRIPTION} />
-    {/* {url && <meta name="twitter:image" content={`${url}${OG_IMG_FILENAME}`} />} */}
+    {url && <meta name="twitter:image" content={`${url}${OG_IMG_FILENAME}`} />}
   </Head>
 );
 
