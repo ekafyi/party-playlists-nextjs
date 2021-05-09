@@ -43,7 +43,7 @@ Lastly, make sure your remote environment configuration contains the same values
 - https://docs.netlify.com/configure-builds/environment-variables/
 - https://vercel.com/docs/environment-variables
 
-#### Wait, what sample data?
+#### 🤔 Tell me more about the "sample data" thing?
 
 During development, I use local JSON files as data source instead of fetching from the Spotify API, which is faster and reduces Spotify API hits. To use sample data, enable `DEV_USE_SAMPLE_DATA=1` in the environment configuration and (optionally) modify the data here https://github.com/ekafyi/party-playlists-nextjs/tree/docs/update-readme/src/sample-data
 
