@@ -24,6 +24,11 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <noscript
+            dangerouslySetInnerHTML={{
+              __html: `<style>.nojs-hidden{display:none!important;}</style>`,
+            }}
+          />
         </body>
       </Html>
     );

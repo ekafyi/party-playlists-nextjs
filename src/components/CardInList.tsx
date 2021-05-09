@@ -42,7 +42,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
               </div>
             )}
           </InView>
-          <div aria-hidden="true" className={styles.card__artwork} />
+          <div aria-hidden="true" className={`${styles.card__artwork} nojs-hidden`} />
           <noscript>
             <div className={styles.card__artwork}>
               <Img src={getMediumImage(images).url} srcSet={buildSrcSet(images)} />
