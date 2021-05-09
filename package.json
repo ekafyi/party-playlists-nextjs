@@ -25,6 +25,7 @@
     ]
   },
   "dependencies": {
+    "framer-motion": "^4.1.13",
     "next": "latest",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",

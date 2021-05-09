@@ -1,5 +1,5 @@
 .track {
-  @apply grid gap-x-2 items-start border-b py-2 px-2 relative hover:bg-gray-100 focus:bg-gray-100 focus:outline-black transition duration-500;
+  @apply grid gap-x-2 items-start border-b py-2 px-2 relative hover:bg-gray-100 focus:bg-gray-100 focus-visible:outline-black transition duration-500;
   --thumb-container-w: 3.25rem;
   grid-template-columns: max-content var(--thumb-container-w) minmax(0, 1fr);
 }
@@ -26,7 +26,7 @@
 }
 
 .track__title {
-  @apply text-lg sm:text-xl xl:text-2xl leading-tight font-medium truncate;
+  @apply text-lg sm:text-xl xl:text-2xl leading-tight font-medium pr-8 truncate;
 }
 
 .track__artist {
