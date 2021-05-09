@@ -47,7 +47,7 @@ Lastly, make sure your remote environment configuration contains the same values
 
 During development, I use local JSON files as data source instead of fetching from the Spotify API, which is faster and reduces hitting the Spotify API. Modify the data here: https://github.com/ekafyi/party-playlists-nextjs/tree/docs/update-readme/src/sample-data
 
-⚠️ Important: Make sure you have obscured the playlist IDs before copying data from (eg.) fetch or cURL results.
+⚠️ Important: Make sure you have obscured the playlist IDs before committing sample data from (eg.) fetch or cURL results.
 
 ---
 
