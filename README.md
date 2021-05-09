@@ -43,6 +43,12 @@ Lastly, make sure your remote configuration reflects the local one. Refer to the
 - https://docs.netlify.com/configure-builds/environment-variables/
 - https://vercel.com/docs/environment-variables
 
+#### Wait, what sample data?
+
+During development, I use local JSON files as data source instead of fetching from the Spotify API, which is faster and reduces hitting the Spotify API. Modify the data here: https://github.com/ekafyi/party-playlists-nextjs/tree/docs/update-readme/src/sample-data
+
+⚠️ Important: Make sure you have obscured the playlist IDs before copying data from (eg.) fetch or cURL results.
+
 ---
 
 Credits
