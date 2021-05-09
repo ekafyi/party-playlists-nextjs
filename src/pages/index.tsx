@@ -1,4 +1,3 @@
-import { m as motion } from "framer-motion";
 import { GetStaticProps, NextPage } from "next";
 import * as React from "react";
 import SpotifyWebApi from "spotify-web-api-node";
@@ -23,14 +22,13 @@ export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists 
         {playlists ? (
           <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 mb-8">
             {playlists.map((playlist) => (
-              <motion.div layoutId={`card-${playlist.name}`} layout key={playlist.name}>
-                <CardInList
-                  title={playlist.name}
-                  subtitle={replaceUnicode(playlist.description || "")}
-                  slug={`/${playlist.slug}`}
-                  images={playlist.images}
-                />
-              </motion.div>
+              <CardInList
+                key={playlist.name}
+                title={playlist.name}
+                subtitle={replaceUnicode(playlist.description || "")}
+                slug={`/${playlist.slug}`}
+                images={playlist.images}
+              />
             ))}
           </div>
         ) : (
