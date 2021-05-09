@@ -28,7 +28,7 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
                 />
               </div>
             </ThumbWrapper>
-            <FadeIn transition={{ delay: 0.2 }} className="pl-3 pt-1 sm:p-0">
+            <FadeIn transition={{ delay: 0.2 }} className="pl-3 pt-1 sm:p-0 nojs-opacity-100">
               <div aria-hidden="true" className={`${styles.playlist__title} mb-3 sm:hidden`}>
                 {playlist.name}
               </div>
@@ -36,7 +36,7 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
             </FadeIn>
           </div>
         </div>
-        <FadeIn element="header" transition={{ delay: 0.2 }} className="pb-4">
+        <FadeIn element="header" transition={{ delay: 0.2 }} className="pb-4 nojs-opacity-100">
           <h1 className={`${styles.playlist__title} sr-only sm:not-sr-only`}>{playlist.name}</h1>
           <p className={styles.playlist__desc}>{replaceUnicode(playlist.description || "")}</p>
           {playlist.tracks.items.length && (
@@ -45,7 +45,12 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
             </div>
           )}
         </FadeIn>
-        <FadeIn element="section" transition={{ delay: 0.4 }} className={styles.playlist__tracks} aria-label="tracks">
+        <FadeIn
+          element="section"
+          transition={{ delay: 0.4 }}
+          className={`${styles.playlist__tracks} nojs-opacity-100`}
+          aria-label="tracks"
+        >
           {playlist.tracks.items.map(({ track, added_by }, index) => (
             <Track key={track.name} track={track} adder={added_by} trackNum={index + 1} />
           ))}
