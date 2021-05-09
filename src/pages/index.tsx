@@ -14,31 +14,49 @@ interface IPlaylistWithSlug extends SpotifyApi.SinglePlaylistResponse {
   slug: string;
 }
 
-export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists }): JSX.Element => (
-  <>
-    <MetaHead titleKey="homePage" title={APP_NAME} url={process.env.URL} />
-    <main className="flex flex-col items-center justify-center max-w-xl md:max-w-4xl lg:max-w-6xl mx-auto p-2 md:p-4">
-      <HomeHeader />
-      {playlists ? (
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 mb-8">
-          {playlists.map((playlist) => (
-            <motion.div key={playlist.name} layoutId={`card-${playlist.name}`} layout animate={{ zIndex: 10 }}>
-              <CardInList
-                title={playlist.name}
-                subtitle={replaceUnicode(playlist.description || "")}
-                slug={`/${playlist.slug}`}
-                images={playlist.images}
-              />
-            </motion.div>
-          ))}
-        </div>
-      ) : (
-        <div className="text-red-700 h-80 flex items-center">error getting playlists 😿</div>
-      )}
-    </main>
-    {/* {JSON.stringify(playlists)} */}
-  </>
-);
+export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists }): JSX.Element => {
+  return (
+    <>
+      <MetaHead titleKey="homePage" title={APP_NAME} url={process.env.URL} />
+      <main className="flex flex-col items-center justify-center max-w-xl md:max-w-4xl lg:max-w-6xl mx-auto p-2 md:p-4">
+        <HomeHeader />
+        {playlists ? (
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 mb-8">
+            {playlists.map((playlist) => (
+              <motion.div
+                key={playlist.name}
+                layoutId={`card-${playlist.name}`}
+                layout
+                // FIXME
+                // ? coba
+                onClick={(e) => console.log(e)}
+                animate={
+                  playlist.slug === "party-corgi-build-a-vibe-april-2021-1q4a"
+                    ? {
+                        position: ["absolute", "absolute", "relative"],
+                        filter: ["invert(1)", "invert(0.75)", "invert(0)"],
+                        transition: { times: [0, 2], duration: 5 },
+                      }
+                    : undefined
+                }
+              >
+                <CardInList
+                  title={playlist.name}
+                  subtitle={replaceUnicode(playlist.description || "")}
+                  slug={`/${playlist.slug}`}
+                  images={playlist.images}
+                />
+              </motion.div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-red-700 h-80 flex items-center">error getting playlists 😿</div>
+        )}
+      </main>
+      {/* {JSON.stringify(playlists)} */}
+    </>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   // Don't proceed if no playlist ids.

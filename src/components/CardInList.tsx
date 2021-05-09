@@ -29,21 +29,23 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
     <article className={styles.card}>
       {images.length ? (
         <>
-          {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-          {/* @ts-ignore */}
-          <InView rootMargin="20px 20px 40px 20px" triggerOnce={true}>
-            {({ inView, ref }) => (
-              <motion.div layoutId={`thumb-${title}`} layout className={styles.card__artwork} ref={ref}>
-                <Img
-                  crossOrigin="anonymous"
-                  src={inView ? getMediumImage(images).url : TRANSPARENT_PX_IMG}
-                  className={inView ? "opacity-100" : "opacity-0"}
-                  srcSet={buildSrcSet(images)}
-                />
-              </motion.div>
-            )}
-          </InView>
-          <div aria-hidden="true" className={styles.card__artwork} />
+          <motion.div layoutId={`thumb-${title}`} layout>
+            {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
+            {/* @ts-ignore */}
+            <InView rootMargin="20px 20px 40px 20px" triggerOnce={true}>
+              {({ inView, ref }) => (
+                <div className={styles.card__artwork} ref={ref}>
+                  <Img
+                    crossOrigin="anonymous"
+                    src={inView ? getMediumImage(images).url : TRANSPARENT_PX_IMG}
+                    className={inView ? "opacity-100" : "opacity-0"}
+                    srcSet={buildSrcSet(images)}
+                  />
+                </div>
+              )}
+            </InView>
+            <div aria-hidden="true" className={styles.card__artwork} />
+          </motion.div>
           <noscript>
             <div className={styles.card__artwork}>
               <Img src={getMediumImage(images).url} srcSet={buildSrcSet(images)} />
@@ -53,12 +55,14 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
       ) : (
         <img aria-hidden="true" src={TRANSPARENT_PX_IMG} width="200" height="200" />
       )}
-      <Link href={slug} passHref>
-        <a className="common-cover-parent">
-          <h2 className={styles.card__title}>{title}</h2>
-          <p className={styles.card__subtitle}>{subtitle || ""}</p>
-        </a>
-      </Link>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.4 } }}>
+        <Link href={slug} passHref>
+          <a className="common-cover-parent">
+            <h2 className={styles.card__title}>{title}</h2>
+            <p className={styles.card__subtitle}>{subtitle || ""}</p>
+          </a>
+        </Link>
+      </motion.div>
     </article>
   );
 };
