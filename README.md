@@ -45,12 +45,12 @@ Lastly, make sure your remote environment configuration contains the same values
 
 #### Wait, what sample data?
 
-During development, I use local JSON files as data source instead of fetching from the Spotify API, which is faster and reduces hitting the Spotify API. Modify the data here: https://github.com/ekafyi/party-playlists-nextjs/tree/docs/update-readme/src/sample-data
+During development, I use local JSON files as data source instead of fetching from the Spotify API, which is faster and reduces Spotify API hits. To use sample data, enable `DEV_USE_SAMPLE_DATA=1` in the environment configuration and (optionally) modify the data here https://github.com/ekafyi/party-playlists-nextjs/tree/docs/update-readme/src/sample-data
 
 ⚠️ Important: Make sure you have obscured the playlist IDs before committing sample data from (eg.) fetch or cURL results.
 
+Have fun and let me know what you build from this! 🤘🏽
+
 ---
 
-Credits
-
-- Icon: [Freepik.com](https://www.freepik.com)
+Icon by [Freepik.com](https://www.freepik.com)
