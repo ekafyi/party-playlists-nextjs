@@ -1,5 +1,5 @@
 .card {
-  @apply bg-gray-50 hover:bg-purple-100 rounded relative p-2 sm:p-4 hover:shadow-xl;
+  @apply bg-gray-50 rounded relative h-full p-2 sm:p-4 hover:shadow-xl;
 }
 
 .card__title {
@@ -36,4 +36,16 @@
 .card,
 .card__artwork {
   @apply transition duration-500;
+}
+
+.card--loading {
+  @apply pointer-events-none;
+}
+
+.card--loading img {
+  filter: grayscale(50%) opacity(0.75);
+}
+
+.card--loading a:focus {
+  box-shadow: none;
 }

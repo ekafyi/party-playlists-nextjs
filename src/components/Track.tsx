@@ -37,7 +37,7 @@ const Track: React.FunctionComponent<ITrackProps> = ({ track, adder, trackNum })
             </div>
           )}
         </InView>
-        <div aria-hidden="true" className={styles.track__artwork} />
+        <div aria-hidden="true" className={`${styles.track__artwork} nojs-hidden`} />
         <noscript>
           <div className={styles.track__artwork}>
             <img src={getSmallestImage(track.album.images).url} alt="" width="60" height="60" />

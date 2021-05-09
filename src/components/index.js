@@ -1,6 +1,7 @@
 export { default as BackLink } from "./BackLink";
 export { default as CardInList } from "./CardInList";
 export { default as HomeHeader } from "./HomeHeader";
+export { default as Loading } from "./Loading";
 export { default as MetaHead } from "./MetaHead";
 export { default as Share } from "./Share";
 export { default as SinglePlaylist } from "./SinglePlaylist";

@@ -13,30 +13,32 @@ interface IPlaylistWithSlug extends SpotifyApi.SinglePlaylistResponse {
   slug: string;
 }
 
-export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists }): JSX.Element => (
-  <>
-    <MetaHead titleKey="homePage" title={APP_NAME} url={process.env.URL} />
-    <main className="flex flex-col items-center justify-center max-w-xl md:max-w-4xl lg:max-w-6xl mx-auto p-2 md:p-4">
-      <HomeHeader />
-      {playlists ? (
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 mb-8">
-          {playlists.map((playlist) => (
-            <CardInList
-              key={playlist.name}
-              title={playlist.name}
-              subtitle={replaceUnicode(playlist.description || "")}
-              slug={`/${playlist.slug}`}
-              images={playlist.images}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className="text-red-700 h-80 flex items-center">error getting playlists 😿</div>
-      )}
-    </main>
-    {/* {JSON.stringify(playlists)} */}
-  </>
-);
+export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists }): JSX.Element => {
+  return (
+    <>
+      <MetaHead titleKey="homePage" title={APP_NAME} url={process.env.URL} />
+      <main className="flex flex-col items-center justify-center max-w-xl md:max-w-4xl lg:max-w-6xl mx-auto p-2 md:p-4">
+        <HomeHeader />
+        {playlists ? (
+          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 mb-8">
+            {playlists.map((playlist) => (
+              <CardInList
+                key={playlist.name}
+                title={playlist.name}
+                subtitle={replaceUnicode(playlist.description || "")}
+                slug={`/${playlist.slug}`}
+                images={playlist.images}
+              />
+            ))}
+          </div>
+        ) : (
+          <div className="text-red-700 h-80 flex items-center">error getting playlists 😿</div>
+        )}
+      </main>
+      {/* {JSON.stringify(playlists)} */}
+    </>
+  );
+};
 
 export const getStaticProps: GetStaticProps = async () => {
   // Don't proceed if no playlist ids.

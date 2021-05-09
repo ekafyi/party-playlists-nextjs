@@ -1,5 +1,5 @@
 .playlist {
-  @apply bg-white rounded-lg shadow m-2 sm:m-4 p-4 gap-y-4 gap-x-6 md:gap-x-10 md:px-6 md:py-8 lg:p-12 lg:m-8 xl:gap-x-14 grid;
+  @apply bg-white rounded-lg shadow-xl m-2 sm:m-4 p-4 gap-y-4 gap-x-6 md:gap-x-10 md:px-6 md:py-8 lg:p-12 lg:m-8 xl:gap-x-14 grid relative;
   /* When left-col-w variable is not defined, it's not considered a column (ie. we get a one-column grid) */
   grid-template-columns: var(--left-col-w) minmax(0, 1fr);
 }

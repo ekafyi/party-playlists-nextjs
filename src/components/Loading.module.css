@@ -1,0 +1,14 @@
+.loading {
+  @apply absolute z-10 inset-1/2 w-full h-full flex items-center justify-center;
+  transform: translate(-50%, -50%);
+}
+
+.loading__icon {
+  animation-duration: 8s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loading__icon {
+    animation-duration: 40s !important;
+  }
+}

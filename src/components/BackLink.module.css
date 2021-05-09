@@ -11,7 +11,7 @@
 }
 
 .anchor {
-  @apply fixed top-0 left-0 z-10 inline-block w-24 h-24 md:w-28 md:h-28 transform -translate-y-1/2 -translate-x-1/2 rotate-45 text-white bg-black bg-opacity-80 hover:bg-indigo-800 focus:bg-indigo-800 duration-150 focus:outline-black;
+  @apply fixed top-0 left-0 z-10 inline-block w-24 h-24 md:w-28 md:h-28 transform -translate-y-1/2 -translate-x-1/2 rotate-45 text-white bg-black bg-opacity-80 hover:bg-indigo-800 focus:bg-indigo-800 duration-150 focus-visible:outline-black;
 }
 
 .arrow {

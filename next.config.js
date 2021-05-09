@@ -2,6 +2,7 @@ const withPWA = require("next-pwa");
 
 const pwaConfig = {
   dest: "public",
+  disable: !process.env.URL,
   // If not supplied, this is used by default: https://github.com/shadowwalker/next-pwa/blob/master/cache.js
   runtimeCaching: [
     {
