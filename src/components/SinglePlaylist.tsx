@@ -1,4 +1,4 @@
-import { m as motion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import { Share, Track } from "../components";
 import { FadeIn } from "../components/motion/FadeIn";
 import { PLAYLIST_THUMB_SIZES, TRANSPARENT_PX_IMG } from "../lib/constants";
@@ -12,43 +12,50 @@ interface ISinglePlaylistProps {
 }
 
 const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlist }) => {
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    <main className={styles.playlist}>
-      <div className={styles.playlist__artworkContainer}>
-        <div className={styles.playlist__stickyContainer}>
-          <motion.div layoutId={`thumb-${playlist.name}`} className={styles.playlist__artwork}>
-            <img
-              src={getMediumImage(playlist.images)?.url || TRANSPARENT_PX_IMG}
-              sizes={PLAYLIST_THUMB_SIZES}
-              srcSet={buildSrcSet(playlist.images)}
-              alt=""
-              width="300"
-              height="300"
-            />
-          </motion.div>
-          <FadeIn transition={{ delay: 0.2 }} className="pl-3 pt-1 sm:p-0">
-            <div aria-hidden="true" className={`${styles.playlist__title} mb-3 sm:hidden`}>
-              {playlist.name}
-            </div>
-            <Share title={playlist.name} />
-          </FadeIn>
-        </div>
-      </div>
-      <FadeIn element="header" transition={{ delay: 0.2 }} className="pb-4">
-        <h1 className={`${styles.playlist__title} sr-only sm:not-sr-only`}>{playlist.name}</h1>
-        <p className={styles.playlist__desc}>{replaceUnicode(playlist.description || "")}</p>
-        {playlist.tracks.items.length && (
-          <div className={styles.playlist__meta}>
-            {playlist.tracks.items.length} {playlist.tracks.items.length > 1 ? "tracks" : "track"}
+    <motion.div layoutId={`card-${playlist.name}`} initial="initial" animate="animate">
+      <main className={styles.playlist}>
+        <div className={styles.playlist__artworkContainer}>
+          <div className={styles.playlist__stickyContainer}>
+            <motion.div
+              layoutId={shouldReduceMotion ? undefined : `thumb-${playlist.name}`}
+              className={styles.playlist__artwork}
+            >
+              <img
+                src={getMediumImage(playlist.images)?.url || TRANSPARENT_PX_IMG}
+                sizes={PLAYLIST_THUMB_SIZES}
+                srcSet={buildSrcSet(playlist.images)}
+                alt=""
+                width="300"
+                height="300"
+              />
+            </motion.div>
+            <FadeIn transition={{ delay: 0.2 }} className="pl-3 pt-1 sm:p-0">
+              <div aria-hidden="true" className={`${styles.playlist__title} mb-3 sm:hidden`}>
+                {playlist.name}
+              </div>
+              <Share title={playlist.name} />
+            </FadeIn>
           </div>
-        )}
-      </FadeIn>
-      <FadeIn element="section" transition={{ delay: 0.4 }} className={styles.playlist__tracks} aria-label="tracks">
-        {playlist.tracks.items.map(({ track, added_by }, index) => (
-          <Track key={track.name} track={track} adder={added_by} trackNum={index + 1} />
-        ))}
-      </FadeIn>
-    </main>
+        </div>
+        <FadeIn element="header" transition={{ delay: 0.2 }} className="pb-4">
+          <h1 className={`${styles.playlist__title} sr-only sm:not-sr-only`}>{playlist.name}</h1>
+          <p className={styles.playlist__desc}>{replaceUnicode(playlist.description || "")}</p>
+          {playlist.tracks.items.length && (
+            <div className={styles.playlist__meta}>
+              {playlist.tracks.items.length} {playlist.tracks.items.length > 1 ? "tracks" : "track"}
+            </div>
+          )}
+        </FadeIn>
+        <FadeIn element="section" transition={{ delay: 0.4 }} className={styles.playlist__tracks} aria-label="tracks">
+          {playlist.tracks.items.map(({ track, added_by }, index) => (
+            <Track key={track.name} track={track} adder={added_by} trackNum={index + 1} />
+          ))}
+        </FadeIn>
+      </main>
+    </motion.div>
   );
 };
 

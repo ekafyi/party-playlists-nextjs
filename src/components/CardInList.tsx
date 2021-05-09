@@ -1,4 +1,4 @@
-import { m as motion } from "framer-motion";
+import { m as motion, useReducedMotion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";
@@ -29,13 +29,14 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
 
   const [navigating, setNavigating] = React.useState(false);
 
+  const shouldReduceMotion = useReducedMotion();
+
   return (
-    // prettier-ignore
-    <motion.div layoutId={`card-${title}`} layout>
+    <motion.div layoutId={shouldReduceMotion ? undefined : `card-${title}`} layout>
       <motion.article layout className={`${styles.card} ${navigating ? styles["card--loading"] : ""}`}>
         {images.length ? (
           <>
-            <motion.div layoutId={`thumb-${title}`} layout>
+            <motion.div layoutId={shouldReduceMotion ? undefined : `thumb-${title}`} layout>
               {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
               {/* @ts-ignore */}
               <InView rootMargin="20px 20px 40px 20px" triggerOnce={true}>

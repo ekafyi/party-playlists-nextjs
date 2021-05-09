@@ -45,3 +45,7 @@
 .card--loading img {
   filter: grayscale(50%) opacity(0.75);
 }
+
+.card--loading a:focus {
+  box-shadow: none;
+}
