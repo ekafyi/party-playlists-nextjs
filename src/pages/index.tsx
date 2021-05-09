@@ -1,7 +1,7 @@
 import { GetStaticProps, NextPage } from "next";
 import * as React from "react";
 import SpotifyWebApi from "spotify-web-api-node";
-import { CardInList, HomeHeader, MetaHead } from "../components";
+import { CardInList, Footer, HomeHeader, MetaHead } from "../components";
 import { APP_NAME, MINIMUM_FIELDS_PARAM } from "../lib/constants";
 import { buildSlug } from "../lib/slug-helpers";
 import { replaceUnicode } from "../lib/str-helpers";
@@ -35,7 +35,13 @@ export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists 
           <div className="text-red-700 h-80 flex items-center">error getting playlists 😿</div>
         )}
       </main>
+      <Footer />
       {/* {JSON.stringify(playlists)} */}
+      <style jsx>{`
+        main {
+          min-height: calc(100vh - 4rem);
+        }
+      `}</style>
     </>
   );
 };
