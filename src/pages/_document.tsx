@@ -13,13 +13,11 @@ class MyDocument extends Document {
         <Head>
           <meta name="description" content={APP_DESCRIPTION} />
 
-          {/* TODO icons */}
-          {/* <link href="/favicon.ico" rel="shortcut icon">
-          <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
-          <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png">
-          <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-          <link rel="manifest" href="/manifest.json"></link> */}
-          {/* === */}
+          <link href="/favicon.ico" rel="shortcut icon" />
+          <link href="/icons/icon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+          <link href="/icons/icon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+          <link href="/icons/apple-touch-icon.png" rel="apple-touch-icon" />
+          <link href="/manifest.json" rel="manifest" />
         </Head>
         <body>
           <Main />
