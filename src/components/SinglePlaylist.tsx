@@ -1,6 +1,5 @@
-import { m as motion, useReducedMotion } from "framer-motion";
 import { Share, Track } from "../components";
-import { FadeIn } from "../components/motion/FadeIn";
+import { FadeIn, PlaylistWrapper, ThumbWrapper } from "../components/motion";
 import { PLAYLIST_THUMB_SIZES, TRANSPARENT_PX_IMG } from "../lib/constants";
 import { buildSrcSet, getMediumImage } from "../lib/get-spotify-image";
 import { replaceUnicode } from "../lib/str-helpers";
@@ -12,26 +11,23 @@ interface ISinglePlaylistProps {
 }
 
 const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlist }) => {
-  const shouldReduceMotion = useReducedMotion();
-
   return (
-    <motion.div layoutId={`card-${playlist.name}`} initial="initial" animate="animate">
+    <PlaylistWrapper layoutId={`card-${playlist.name}`}>
       <main className={styles.playlist}>
         <div className={styles.playlist__artworkContainer}>
           <div className={styles.playlist__stickyContainer}>
-            <motion.div
-              layoutId={shouldReduceMotion ? undefined : `thumb-${playlist.name}`}
-              className={styles.playlist__artwork}
-            >
-              <img
-                src={getMediumImage(playlist.images)?.url || TRANSPARENT_PX_IMG}
-                sizes={PLAYLIST_THUMB_SIZES}
-                srcSet={buildSrcSet(playlist.images)}
-                alt=""
-                width="300"
-                height="300"
-              />
-            </motion.div>
+            <ThumbWrapper layoutId={`thumb-${playlist.name}`}>
+              <div className={styles.playlist__artwork}>
+                <img
+                  src={getMediumImage(playlist.images)?.url || TRANSPARENT_PX_IMG}
+                  sizes={PLAYLIST_THUMB_SIZES}
+                  srcSet={buildSrcSet(playlist.images)}
+                  alt=""
+                  width="300"
+                  height="300"
+                />
+              </div>
+            </ThumbWrapper>
             <FadeIn transition={{ delay: 0.2 }} className="pl-3 pt-1 sm:p-0">
               <div aria-hidden="true" className={`${styles.playlist__title} mb-3 sm:hidden`}>
                 {playlist.name}
@@ -55,7 +51,7 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
           ))}
         </FadeIn>
       </main>
-    </motion.div>
+    </PlaylistWrapper>
   );
 };
 

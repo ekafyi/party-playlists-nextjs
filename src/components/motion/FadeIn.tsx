@@ -21,6 +21,9 @@ export const FadeInParent: React.FunctionComponent = (props): JSX.Element => {
   );
 };
 
+// Use for non-layout motion components, either as a wrapper or replacing non-motion element.
+// eg. <FadeIn element="header" transition={{ delay: 0.2 }} className="foo">
+// Without motion: <header className="foo">
 export const FadeIn: React.FunctionComponent<IFadeInProps> = (props): JSX.Element => {
   if (props.element) {
     switch (props.element) {

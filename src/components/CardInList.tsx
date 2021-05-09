@@ -1,8 +1,9 @@
-import { m as motion, useReducedMotion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";
 import { Loading } from ".";
+import { CardWrapper, ThumbWrapper } from "../components/motion";
 import { HOME_THUMB_SIZES, TRANSPARENT_PX_IMG } from "../lib/constants";
 import { buildSrcSet, getMediumImage } from "../lib/get-spotify-image";
 import styles from "./CardInList.module.css";
@@ -29,14 +30,12 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
 
   const [navigating, setNavigating] = React.useState(false);
 
-  const shouldReduceMotion = useReducedMotion();
-
   return (
-    <motion.div layoutId={shouldReduceMotion ? undefined : `card-${title}`} layout>
-      <motion.article layout className={`${styles.card} ${navigating ? styles["card--loading"] : ""}`}>
+    <CardWrapper layoutId={`card-${title}`}>
+      <motion.article layout="position" className={`${styles.card} ${navigating ? styles["card--loading"] : ""}`}>
         {images.length ? (
           <>
-            <motion.div layoutId={shouldReduceMotion ? undefined : `thumb-${title}`} layout>
+            <ThumbWrapper layoutId={`thumb-${title}`}>
               {/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
               {/* @ts-ignore */}
               <InView rootMargin="20px 20px 40px 20px" triggerOnce={true}>
@@ -52,7 +51,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
                 )}
               </InView>
               <div aria-hidden="true" className={`${styles.card__artwork} nojs-hidden`} />
-            </motion.div>
+            </ThumbWrapper>
             <noscript>
               <div className={styles.card__artwork}>
                 <Img src={getMediumImage(images).url} srcSet={buildSrcSet(images)} />
@@ -71,7 +70,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
         </Link>
         {navigating && <Loading />}
       </motion.article>
-    </motion.div>
+    </CardWrapper>
   );
 };
 
