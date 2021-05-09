@@ -30,7 +30,7 @@ const TRACKLIST_VARIANTS = {
 
 const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlist }) => {
   return (
-    <motion.main layoutId={`card-${playlist.name}`} className={styles.playlist}>
+    <main className={styles.playlist}>
       <div className={styles.playlist__artworkContainer}>
         <div className={styles.playlist__stickyContainer}>
           <motion.div layoutId={`thumb-${playlist.name}`} className={styles.playlist__artwork}>
@@ -71,7 +71,7 @@ const SinglePlaylist: React.FunctionComponent<ISinglePlaylistProps> = ({ playlis
           <Track key={track.name} track={track} adder={added_by} trackNum={index + 1} />
         ))}
       </motion.section>
-    </motion.main>
+    </main>
   );
 };
 

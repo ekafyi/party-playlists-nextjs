@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { GetServerSideProps, NextPage } from "next";
 import * as React from "react";
 import SpotifyWebApi from "spotify-web-api-node";
@@ -11,7 +12,9 @@ const PlaylistPage: NextPage<{ playlist: SpotifyApi.PlaylistObjectFull }> = ({ p
     <>
       <MetaHead titleKey="slugPage" title={`${playlist.name} | ${APP_NAME}`} url={process.env.URL} />
       <BackLink />
-      <SinglePlaylist playlist={playlist} />
+      <motion.div layoutId={`card-${playlist.name}`}>
+        <SinglePlaylist playlist={playlist} />
+      </motion.div>
     </>
   );
 };
