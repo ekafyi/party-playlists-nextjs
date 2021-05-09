@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"; // eslint-ignore
+import { m as motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";

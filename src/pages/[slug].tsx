@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { GetServerSideProps, NextPage } from "next";
 import * as React from "react";
 import SpotifyWebApi from "spotify-web-api-node";

@@ -1,4 +1,4 @@
-import { motion, Transition } from "framer-motion";
+import { m as motion, Transition } from "framer-motion";
 
 const BASE_VARIANTS = {
   initial: { opacity: 0 },

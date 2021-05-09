@@ -1,4 +1,4 @@
-import { motion } from "framer-motion"; // eslint-ignore
+import { m as motion } from "framer-motion";
 import { GetStaticProps, NextPage } from "next";
 import * as React from "react";
 import SpotifyWebApi from "spotify-web-api-node";
