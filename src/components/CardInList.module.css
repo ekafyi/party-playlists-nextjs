@@ -37,3 +37,11 @@
 .card__artwork {
   @apply transition duration-500;
 }
+
+.card--loading {
+  @apply pointer-events-none;
+}
+
+.card--loading img {
+  filter: grayscale(50%) opacity(0.75);
+}

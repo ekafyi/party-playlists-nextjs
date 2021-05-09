@@ -2,6 +2,7 @@ import { m as motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import React from "react";
+import { Loading } from ".";
 import { HOME_THUMB_SIZES, TRANSPARENT_PX_IMG } from "../lib/constants";
 import { buildSrcSet, getMediumImage } from "../lib/get-spotify-image";
 import styles from "./CardInList.module.css";
@@ -25,9 +26,13 @@ const Img = (props) => {
 
 const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
   const { title, subtitle, images, slug } = props;
+
+  const [navigating, setNavigating] = React.useState(false);
+
   return (
+    // prettier-ignore
     <motion.div layoutId={`card-${title}`} layout>
-      <article className={styles.card}>
+      <motion.article layout className={`${styles.card} ${navigating ? styles["card--loading"] : ""}`}>
         {images.length ? (
           <>
             <motion.div layoutId={`thumb-${title}`} layout>
@@ -57,12 +62,14 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
           <img aria-hidden="true" src={TRANSPARENT_PX_IMG} width="200" height="200" />
         )}
         <Link href={slug} passHref>
-          <a className="common-cover-parent">
+          {/* prettier-ignore */}
+          <a className="common-cover-parent" onClick={() => { setNavigating(true) }}>
             <h2 className={styles.card__title}>{title}</h2>
             <p className={styles.card__subtitle}>{subtitle || ""}</p>
           </a>
         </Link>
-      </article>
+        {navigating && <Loading />}
+      </motion.article>
     </motion.div>
   );
 };
