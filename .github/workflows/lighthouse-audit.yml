@@ -13,4 +13,4 @@ jobs:
       uses: actions/upload-artifact@master
       with:
         name: report
-        path: './lighthouse_audit_report'
+        path: './lighthouse_results'
