@@ -27,7 +27,7 @@ env:
   # 
   # YOU DON'T HAVE TO DEFINE ANYTHING FOR THE DEFAULT VALUES
   DEFAULT-REPOSITORY: ${{ github.repository }} # repo with this file
-  DEFAULT-BRANCH: 'master'
+  DEFAULT-BRANCH: 'main'
   DEFAULT-BADGES-ARGS: '-b pagespeed -o lighthouse_results -r'
   DEFAULT-RESULTS-TYPE: 'both'
   DEFAULT-MOBILE-LIGHTHOUSE-PARAMS: '--throttling.cpuSlowdownMultiplier=2'
