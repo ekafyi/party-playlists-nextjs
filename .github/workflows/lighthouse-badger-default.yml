@@ -15,7 +15,7 @@ env:
   # 
   # Inputs for not manually triggered workflows (if empty, defaults are used)
   URLS: # URL(s) to be checked e.g. 'https://github.com/sitdisch https://github.com/mythemeway'
-  REPOSITORY: # target repository e.g. 'dummy/mytargetrepo'
+  REPOSITORY: ${{ github.repository }}
   BRANCH: # target branch e.g. 'master'
   BADGES-ARGS: # badge-style '-b {flat,...}', preceding-label '-l "Lighthouse "', output-path '-o lighthouse_results/dummy', save-report '-r', single-badge '-s'
   RESULTS-TYPE: # 'mobile', 'desktop' or 'both'
