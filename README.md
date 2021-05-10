@@ -11,7 +11,16 @@ Built with:
 - [Spotify Web API](https://developer.spotify.com/documentation/web-api/) via [spotify-web-api-node](https://github.com/thelinmichael/spotify-web-api-node)
 - ...and more
 
-Lighthouse: https://lighthouse-dot-webdotdevsite.appspot.com//lh/html?url=https%3A%2F%2Flistening-party.netlify.app%2F
+
+## Lighthouse
+
+📱 Mobile
+
+[![Lighthouse performance - mobile](https://raw.githubusercontent.com/ekafyi/party-playlists-nextjs/253ca700004567a712f04f7aaad65f889da7faed/lighthouse_results/mobile/lighthouse_performance.svg)](https://github.com/ekafyi/party-playlists-nextjs/tree/main/lighthouse_results/mobile) [![Lighthouse accessibility - mobile](https://raw.githubusercontent.com/ekafyi/party-playlists-nextjs/253ca700004567a712f04f7aaad65f889da7faed/lighthouse_results/mobile/lighthouse_accessibility.svg)](https://github.com/ekafyi/party-playlists-nextjs/tree/main/lighthouse_results/mobile) [![Lighthouse best practices - mobile](https://raw.githubusercontent.com/ekafyi/party-playlists-nextjs/253ca700004567a712f04f7aaad65f889da7faed/lighthouse_results/mobile/lighthouse_best-practices.svg)](https://github.com/ekafyi/party-playlists-nextjs/tree/main/lighthouse_results/mobile) [![Lighthouse seo - mobile](https://raw.githubusercontent.com/ekafyi/party-playlists-nextjs/253ca700004567a712f04f7aaad65f889da7faed/lighthouse_results/mobile/lighthouse_seo.svg)](https://github.com/ekafyi/party-playlists-nextjs/tree/main/lighthouse_results/mobile) [![Lighthouse pwa - mobile](https://raw.githubusercontent.com/ekafyi/party-playlists-nextjs/253ca700004567a712f04f7aaad65f889da7faed/lighthouse_results/mobile/lighthouse_pwa.svg)](https://github.com/ekafyi/party-playlists-nextjs/tree/main/lighthouse_results/mobile)
+
+💻 Desktop
+
+[![Lighthouse performance - mobile](https://raw.githubusercontent.com/ekafyi/party-playlists-nextjs/253ca700004567a712f04f7aaad65f889da7faed/lighthouse_results/desktop/lighthouse_performance.svg)](https://github.com/ekafyi/party-playlists-nextjs/tree/main/lighthouse_results/desktop) [![Lighthouse accessibility - mobile](https://raw.githubusercontent.com/ekafyi/party-playlists-nextjs/253ca700004567a712f04f7aaad65f889da7faed/lighthouse_results/desktop/lighthouse_accessibility.svg)](https://github.com/ekafyi/party-playlists-nextjs/tree/main/lighthouse_results/desktop) [![Lighthouse best practices - mobile](https://raw.githubusercontent.com/ekafyi/party-playlists-nextjs/253ca700004567a712f04f7aaad65f889da7faed/lighthouse_results/desktop/lighthouse_best-practices.svg)](https://github.com/ekafyi/party-playlists-nextjs/tree/main/lighthouse_results/desktop) [![Lighthouse seo - mobile](https://raw.githubusercontent.com/ekafyi/party-playlists-nextjs/253ca700004567a712f04f7aaad65f889da7faed/lighthouse_results/desktop/lighthouse_seo.svg)](https://github.com/ekafyi/party-playlists-nextjs/tree/main/lighthouse_results/desktop) [![Lighthouse pwa - mobile](https://raw.githubusercontent.com/ekafyi/party-playlists-nextjs/253ca700004567a712f04f7aaad65f889da7faed/lighthouse_results/desktop/lighthouse_pwa.svg)](https://github.com/ekafyi/party-playlists-nextjs/tree/main/lighthouse_results/desktop)
 
 
 ## Usage
