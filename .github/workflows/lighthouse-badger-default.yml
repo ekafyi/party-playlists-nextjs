@@ -17,6 +17,7 @@ env:
   URLS: # URL(s) to be checked e.g. 'https://github.com/sitdisch https://github.com/mythemeway'
   REPOSITORY: ${{ github.repository }}
   BRANCH: # target branch e.g. 'master'
+  # -b plastic | -b pagespeed
   BADGES-ARGS: # badge-style '-b {flat,...}', preceding-label '-l "Lighthouse "', output-path '-o lighthouse_results/dummy', save-report '-r', single-badge '-s'
   RESULTS-TYPE: # 'mobile', 'desktop' or 'both'
   MOBILE-LIGHTHOUSE-PARAMS: # Lighthouse parameters mobile audit
@@ -47,14 +48,14 @@ on:
     inputs:
       urls:
         description: 'URL(s) to be checked'
-        required: true
+        required: false
       repository:
         description: 'Target repository'
         required: true
       branch:
         description: 'Target branch'
         required: true
-        default: 'master'
+        default: 'main'
       badges-args:
         description: 'Badges arguments: -b, -l, -o, -r, -s'
         required: true
@@ -102,9 +103,17 @@ jobs:
         with:
           repository: 'myactionway/lighthouse-badges'
           path: temp_lighthouse_badges_nested
+      - name: Waiting for 200 from Netlify
+        uses: probablyup/wait-for-netlify-action@3.2.0
+        id: waitForNetlifyDeploy
+        with:
+          site_id: '370594cd-489c-457c-a9f2-3c318f7df592' # See Settings > Site Details > General in the Netlify UI
+        env:
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
       - uses: myactionway/lighthouse-badger-action@v1.1
         with:
-          urls: ${{ github.event.inputs.urls || env.URLS }}
+          urls: ${{ steps.waitForNetlifyDeploy.outputs.url }}
+          # urls: ${{ github.event.inputs.urls || env.URLS }}
           badges-args: ${{ github.event.inputs.badges-args || env.BADGES-ARGS || env.DEFAULT-BADGES-ARGS }}
           results-type: ${{ github.event.inputs.results-type || env.RESULTS-TYPE || env.DEFAULT-RESULTS-TYPE }}
           mobile-lighthouse-params: ${{ github.event.inputs.mobile-lighthouse-params || env.MOBILE-LIGHTHOUSE-PARAMS || env.DEFAULT-MOBILE-LIGHTHOUSE-PARAMS }}
