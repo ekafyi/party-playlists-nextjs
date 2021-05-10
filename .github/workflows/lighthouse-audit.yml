@@ -1,6 +1,6 @@
 name: Audit live site
-on: push
-
+on:
+  workflow_dispatch:
 jobs:
   audit:
     runs-on: ubuntu-latest
