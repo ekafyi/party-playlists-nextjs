@@ -2,3 +2,7 @@
 **/out/*
 **/.next/*
 **/public/*
+
+.github
+.vscode
+lighthouse_results
