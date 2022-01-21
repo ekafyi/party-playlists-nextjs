@@ -45,7 +45,7 @@ const Track: React.FunctionComponent<ITrackProps> = ({ track, adder, trackNum })
         </noscript>
       </>
     ) : (
-      <img aria-hidden="true" src={TRANSPARENT_PX_IMG} width="200" height="200" />
+      <img aria-hidden="true" src={TRANSPARENT_PX_IMG} width="200" height="200" alt="" />
     )}
     <div className={styles.track__text}>
       <h2 className={styles.track__title}>{track.name}</h2>

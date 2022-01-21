@@ -59,7 +59,7 @@ const CardInList: React.FunctionComponent<ICardInListProps> = (props) => {
             </noscript>
           </>
         ) : (
-          <img aria-hidden="true" src={TRANSPARENT_PX_IMG} width="200" height="200" />
+          <img aria-hidden="true" src={TRANSPARENT_PX_IMG} width="200" height="200" alt="" />
         )}
         <Link href={slug} passHref>
           {/* prettier-ignore */}
