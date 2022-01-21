@@ -1,6 +1,4 @@
-export const assertFulfilled = <T extends unknown>(
-  item: PromiseSettledResult<T>
-): item is PromiseFulfilledResult<T> => {
+export const assertFulfilled = <T>(item: PromiseSettledResult<T>): item is PromiseFulfilledResult<T> => {
   return item.status === "fulfilled";
 };
 
