@@ -20,13 +20,27 @@
     "import/order": [
       "error",
       {
-        "groups": ["builtin", "external", "internal"],
-        "pathGroupsExcludedImportTypes": ["react"],
+        "groups": [
+          "builtin",
+          "external",
+          "internal"
+        ],
+        "pathGroupsExcludedImportTypes": [
+          "react"
+        ],
         "alphabetize": {
           "order": "asc",
           "caseInsensitive": true
         }
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": [ "*.config.js" ],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
 }
