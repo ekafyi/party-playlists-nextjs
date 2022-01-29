@@ -1,8 +1,8 @@
 .card__artwork {
-  @apply relative aspect-square max-w-full lg:sticky lg:top-4;
+  @apply relative aspect-square max-w-full;
 }
 .card__artwork--expanded {
-  @apply h-32 w-32 flex-none overflow-hidden rounded-lg shadow sm:h-48 sm:w-48 lg:h-64 lg:w-64;
+  @apply h-32 w-32 flex-none overflow-hidden rounded-lg shadow sm:h-48 sm:w-48 lg:sticky lg:top-4 lg:h-64 lg:w-64;
 }
 
 .card__artwork__image {

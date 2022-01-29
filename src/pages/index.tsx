@@ -41,11 +41,9 @@ export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists 
       <MetaHead titleKey="homePage" title={APP_NAME} url={process.env.URL} />
       {typeof selectedPlaylistSlug !== "undefined" ? (
         <main>
-          <div className="relative h-full">
-            <AnimatePresence>
-              <Card isExpanded listData={findPlaylist()} />
-            </AnimatePresence>
-          </div>
+          <AnimatePresence>
+            <Card isExpanded listData={findPlaylist()} />
+          </AnimatePresence>
         </main>
       ) : (
         <GridContainer>
