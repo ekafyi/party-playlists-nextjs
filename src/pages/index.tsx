@@ -1,10 +1,13 @@
-import { GetStaticProps, NextPage } from "next";
-import * as React from "react";
+import { AnimatePresence } from "framer-motion";
+import type { GetStaticProps, NextPage } from "next";
+import { useRouter } from "next/router";
+import { useState } from "react";
 import SpotifyWebApi from "spotify-web-api-node";
-import { CardInList, Footer, HomeHeader, MetaHead } from "../components";
+import { Footer, GridContainer, MetaHead } from "../components";
+import { Card } from "../components-new";
 import { APP_NAME, MINIMUM_FIELDS_PARAM } from "../lib/constants";
 import { buildSlug } from "../lib/slug-helpers";
-import { replaceUnicode } from "../lib/str-helpers";
+import { transformPlaylistData } from "../lib/transform-playlist-data";
 import { assertFulfilled } from "../lib/type-helpers";
 import samplePlaylists from "../sample-data/playlists.json";
 
@@ -13,35 +16,59 @@ interface IPlaylistWithSlug extends SpotifyApi.SinglePlaylistResponse {
   slug: string;
 }
 
+const EmptyView = () => (
+  <>
+    <MetaHead titleKey="homePage" title={APP_NAME} url={process.env.URL} />
+    <GridContainer>
+      <div className="flex h-80 items-center text-red-700">error getting playlists or no playlists found 😿</div>
+    </GridContainer>
+  </>
+);
+
 export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists }): JSX.Element => {
+  const [selectedPlaylistSlug, setSelectedPlaylistSlug] = useState<string>();
+
+  const router = useRouter();
+
+  const findPlaylist = () => {
+    const matched = playlists.find((item) => item.slug === selectedPlaylistSlug);
+    return matched ? transformPlaylistData(matched) : null;
+  };
+
+  if (typeof playlists === "undefined" || !playlists.length) return <EmptyView />;
+
   return (
     <>
       <MetaHead titleKey="homePage" title={APP_NAME} url={process.env.URL} />
-      <main className="flex flex-col items-center justify-center max-w-xl md:max-w-4xl lg:max-w-6xl mx-auto p-2 md:p-4">
-        <HomeHeader />
-        {playlists ? (
-          <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6 mb-8">
+      {typeof selectedPlaylistSlug !== "undefined" ? (
+        <main>
+          <div className="relative h-full">
+            <AnimatePresence>
+              <Card isExpanded listData={findPlaylist()} />
+            </AnimatePresence>
+          </div>
+        </main>
+      ) : (
+        <GridContainer>
+          <div className="relative mb-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
             {playlists.map((playlist) => (
-              <CardInList
-                key={playlist.name}
-                title={playlist.name}
-                subtitle={replaceUnicode(playlist.description || "")}
-                slug={`/${playlist.slug}`}
-                images={playlist.images}
+              <Card
+                key={playlist.slug}
+                listData={transformPlaylistData(playlist)}
+                onNavigate={(e) => {
+                  e.preventDefault();
+                  setSelectedPlaylistSlug(playlist.slug);
+                  setTimeout(() => {
+                    router.push(playlist.slug);
+                  }, 500);
+                }}
               />
             ))}
           </div>
-        ) : (
-          <div className="text-red-700 h-80 flex items-center">error getting playlists 😿</div>
-        )}
-      </main>
+        </GridContainer>
+      )}
       <Footer />
       {/* {JSON.stringify(playlists)} */}
-      <style jsx>{`
-        main {
-          min-height: calc(100vh - 4rem);
-        }
-      `}</style>
     </>
   );
 };

@@ -1,0 +1,21 @@
+.card__artwork {
+  @apply relative aspect-square max-w-full lg:sticky lg:top-4;
+}
+.card__artwork--expanded {
+  @apply h-32 w-32 flex-none overflow-hidden rounded-lg shadow sm:h-48 sm:w-48 lg:h-64 lg:w-64;
+}
+
+.card__artwork__image {
+  @apply h-full w-full object-cover;
+}
+
+@supports not (aspect-ratio: 1/1) {
+  .card__artwork:not(.card__artwork--expanded) {
+    min-height: calc(50vw - 1rem);
+  }
+  @media (min-width: 640px) {
+    .card__artwork:not(.card__artwork--expanded) {
+      min-height: 12rem;
+    }
+  }
+}

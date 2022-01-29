@@ -1,0 +1,27 @@
+.card {
+  @apply relative rounded;
+  min-height: 12rem;
+}
+.card--expanded {
+  /* m-2 lg:m-8 lg:p-12 */
+  @apply m-2 bg-white p-4 sm:m-4 md:px-6 md:py-8 lg:m-8 lg:p-12;
+  min-height: calc(100vh - 6rem);
+}
+.card:not(.card--expanded) {
+  @apply h-full bg-gray-50 p-2 hover:shadow-xl sm:p-4;
+}
+
+.card__link {
+  @apply block;
+}
+.card__link::after {
+  @apply absolute inset-0;
+  content: " ";
+}
+.card:not(.card--expanded) .card__link {
+  @apply mt-3 mb-1;
+}
+
+.card:not(.card--expanded):hover > *:first-child {
+  @apply shadow-lg;
+}

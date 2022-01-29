@@ -1,10 +1,14 @@
+export { default as Card } from "../components/Card";
+export { default as PlaylistDescription } from "../components/PlaylistDescription";
+export { default as PlaylistTitle } from "../components/PlaylistTitle";
 export { default as BackLink } from "./BackLink";
-export { default as CardInList } from "./CardInList";
 export { default as Footer } from "./Footer";
+export { default as GridContainer } from "./GridContainer";
 export { default as HomeHeader } from "./HomeHeader";
-export { default as Loading } from "./Loading";
 export { default as MetaHead } from "./MetaHead";
+export { default as PlaylistImage } from "./PlaylistImage";
+export { default as PlaylistTracks } from "./PlaylistTracks";
 export { default as Share } from "./Share";
-export { default as SinglePlaylist } from "./SinglePlaylist";
+export { default as SinglePlaylistWrapper } from "./SinglePlaylistWrapper";
 export { default as SpotifyTrackLink } from "./SpotifyTrackLink";
 export { default as Track } from "./Track";
