@@ -1,4 +1,14 @@
-module.exports = {
+// @link https://github.com/vercel/next.js/discussions/30174
+// @link https://github.com/vercel/next.js/tree/canary/examples/with-jest
+
+const nextJest = require("next/jest");
+
+const createJestConfig = nextJest({
+  // Provide the path to your Next.js app to load next.config.js and .env files in your test environment
+  dir: "./",
+});
+
+const customJestConfig = {
   roots: ["<rootDir>"],
   moduleFileExtensions: ["ts", "tsx", "js", "json", "jsx"],
   testPathIgnorePatterns: ["<rootDir>[/\\\\](node_modules|.next)[/\\\\]"],
@@ -12,3 +22,5 @@ module.exports = {
     "\\.(gif|ttf|eot|svg|png)$": "<rootDir>/test/__mocks__/fileMock.js",
   },
 };
+
+module.exports = createJestConfig(customJestConfig);

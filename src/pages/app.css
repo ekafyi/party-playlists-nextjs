@@ -26,15 +26,12 @@
   body {
     @apply bg-gradient-to-tl from-green-200 to-purple-300;
   }
+  main {
+    min-height: calc(100vh - 4rem);
+  }
 }
 
 @layer components {
-  /* Used eg. in links in cards to make the entire card clickable */
-  /* Note: parent must have the "position" property set. */
-  .common-cover-parent::after {
-    @apply absolute inset-0;
-    content: " ";
-  }
 }
 
 @layer utilities {

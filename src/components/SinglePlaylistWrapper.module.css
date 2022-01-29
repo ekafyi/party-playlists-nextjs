@@ -1,0 +1,34 @@
+.singlePlaylist {
+  @apply mb-4 grid gap-x-3 gap-y-4 sm:gap-x-6 md:gap-x-8 lg:gap-y-6 lg:gap-x-10 xl:gap-x-14;
+  grid-template-columns: min-content 1fr;
+  grid-template-rows: min-content 1fr min-content;
+  grid-template-areas: "thumb title" "thumb cta" "description description" "tracks tracks";
+}
+
+.singlePlaylist > *[data-area="thumb"] {
+  grid-area: thumb;
+}
+.singlePlaylist > *[data-area="title"] {
+  grid-area: title;
+}
+.singlePlaylist > *[data-area="description"] {
+  grid-area: description;
+}
+.singlePlaylist > *[data-area="cta"] {
+  grid-area: cta;
+}
+.singlePlaylist > *[data-area="tracks"] {
+  grid-area: tracks;
+}
+
+@media (min-width: 640px) {
+  .singlePlaylist {
+    grid-template-areas: "thumb title" "thumb description" "cta description" "tracks tracks";
+  }
+}
+
+@media (min-width: 1024px) {
+  .singlePlaylist {
+    grid-template-areas: "thumb title" "thumb description" "thumb cta" "thumb tracks";
+  }
+}

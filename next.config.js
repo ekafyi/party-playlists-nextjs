@@ -105,6 +105,12 @@ const pwaConfig = {
 module.exports = withPWA({
   // See https://github.com/shadowwalker/next-pwa#available-options
   pwa: pwaConfig,
-  // Breaks Netlify build if omitted
-  target: "serverless",
+  // See https://github.com/shadowwalker/next-pwa/issues/198#issuecomment-817205700
+  webpack5: true,
+  // See https://nextjs.org/docs/upgrading#swc-replacing-terser-for-minification
+  swcMinify: true,
+  // See https://nextjs.org/docs/basic-features/image-optimization
+  images: {
+    domains: ["mosaic.scdn.co", "i.scdn.co"],
+  },
 });

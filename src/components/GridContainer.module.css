@@ -1,0 +1,3 @@
+.container {
+  @apply mx-auto flex max-w-xl flex-col items-center justify-center p-2 md:max-w-4xl md:p-4 lg:max-w-6xl;
+}

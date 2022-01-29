@@ -24,7 +24,7 @@ class MyDocument extends Document {
           <NextScript />
           <noscript
             dangerouslySetInnerHTML={{
-              __html: `<style>.nojs-hidden{display:none!important;}.nojs-opacity-100{opacity:1!important;}</style>`,
+              __html: `<style>.nojs-hidden{display:none!important} .nojs-opacity-100{opacity:1!important} .nojs-transform-none{transform:none!important}</style>`,
             }}
           />
         </body>
