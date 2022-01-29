@@ -109,4 +109,8 @@ module.exports = withPWA({
   webpack5: true,
   // See https://nextjs.org/docs/upgrading#swc-replacing-terser-for-minification
   swcMinify: true,
+  // See https://nextjs.org/docs/basic-features/image-optimization
+  images: {
+    domains: ["mosaic.scdn.co", "i.scdn.co"],
+  },
 });
