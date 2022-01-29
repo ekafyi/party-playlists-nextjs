@@ -57,7 +57,7 @@ export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists 
                   setSelectedPlaylistSlug(playlist.slug);
                   setTimeout(() => {
                     router.push(playlist.slug);
-                  }, 500);
+                  }, 400);
                 }}
               />
             ))}
