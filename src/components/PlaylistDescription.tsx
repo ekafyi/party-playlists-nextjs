@@ -1,4 +1,5 @@
 import { m as motion } from "framer-motion";
+import { replaceUnicode } from "../lib/str-helpers";
 
 interface PlaylistDescriptionProps {
   content: string;
@@ -11,12 +12,12 @@ const PlaylistDescription = ({ content, placement, singleOnlyContent = "" }: Pla
     <>
       {placement === "LIST" ? (
         <motion.p className="text-xs text-gray-700 line-clamp-2" layout>
-          {content}
+          {replaceUnicode(content)}
         </motion.p>
       ) : (
         <>
           <motion.p className="text-sm text-gray-700" layout>
-            {content}
+            {replaceUnicode(content)}
           </motion.p>
           {singleOnlyContent && (
             <motion.p className="mt-2 text-xs text-gray-700" layout>
