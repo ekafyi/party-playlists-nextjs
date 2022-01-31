@@ -2,7 +2,7 @@ import fs from "fs";
 import path from "path";
 import { AnimatePresence } from "framer-motion";
 import type { GetStaticProps, NextPage } from "next";
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import SpotifyWebApi from "spotify-web-api-node";
 import { Card, Footer, GridContainer, MetaHead } from "../components";
@@ -24,7 +24,7 @@ const EmptyView = () => (
 export const Home: NextPage<{ playlists?: IPlaylistExcerpt[] }> = ({ playlists }): JSX.Element => {
   const [selectedPlaylistSlug, setSelectedPlaylistSlug] = useState<string>();
 
-  // const router = useRouter();
+  const router = useRouter();
 
   const findPlaylist = () => {
     const matched = playlists.find((item) => item.slug === selectedPlaylistSlug);
@@ -49,12 +49,12 @@ export const Home: NextPage<{ playlists?: IPlaylistExcerpt[] }> = ({ playlists }
               <Card
                 key={playlist.slug}
                 listData={playlist}
-                onNavigate={(_e) => {
-                  // e.preventDefault();
+                onNavigate={(e) => {
+                  e.preventDefault();
                   setSelectedPlaylistSlug(playlist.slug);
-                  // setTimeout(() => {
-                  //   router.push(playlist.slug);
-                  // }, 400);
+                  setTimeout(() => {
+                    router.push(playlist.slug);
+                  }, 400);
                 }}
               />
             ))}
