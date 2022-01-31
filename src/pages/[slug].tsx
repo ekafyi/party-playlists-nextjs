@@ -26,9 +26,11 @@ export const getServerSideProps: GetServerSideProps = async ({ params }) => {
   if (!params || typeof params.slug !== "string") return { notFound: true };
 
   const { slug } = params;
+  console.log("[getServerSideProps] slug?", slug);
 
   if (process.env.FS_PLAYLIST_DIRECTORY?.length) {
     const dataDir = path.join(process.cwd(), process.env.FS_PLAYLIST_DIRECTORY);
+    console.log("[getServerSideProps] dataDir?", dataDir);
     try {
       const filePath = path.join(dataDir, `${slug}.json`);
       const fileContents = fs.readFileSync(filePath, "utf8");
