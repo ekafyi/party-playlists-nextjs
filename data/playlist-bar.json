@@ -1,0 +1,22 @@
+{
+  "description": "My playlist description. Cover photo: Daniel Schludi unsplash.com/@schluditsch",
+  "images": [
+    {
+      "height": 400,
+      "url": "https://images.unsplash.com/photo-1565656898731-61d5df85f9a7?fit=crop&w=600&q=80",
+      "width": 600
+    }
+  ],
+  "name": "Playlist Two",
+  "tracks": [
+    {
+      "added_by": {
+        "display_name": "Eka"
+      },
+      "artist_name": "Leggo Beast",
+      "name": "Bizarre Love Pentangle",
+      "images": [],
+      "url": "https://www.youtube.com/watch?v=IcLbYJXq__c"
+    }
+  ]
+}

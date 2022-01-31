@@ -1,6 +1,5 @@
 import { m as motion } from "framer-motion";
 import { Track } from ".";
-import type { Optional } from "../lib/type-helpers";
 
 const MOTION_SINGLE_CONTAINER_VARIANTS = {
   visible: {
@@ -11,7 +10,7 @@ const MOTION_SINGLE_CONTAINER_VARIANTS = {
 };
 
 interface SinglePlaylistTrackProps {
-  data?: Optional<SpotifyApi.PlaylistObjectFull, | "collaborative" | "id" | "owner" | "public" | "followers" | "snapshot_id" | "type" | "href" | "uri" | "external_urls">; // prettier-ignore
+  data?: IPlaylistFull["tracks"]["items"];
 }
 
 const SinglePlaylistTrack = ({ data }: SinglePlaylistTrackProps) => {
@@ -24,8 +23,8 @@ const SinglePlaylistTrack = ({ data }: SinglePlaylistTrackProps) => {
       animate="visible"
       variants={MOTION_SINGLE_CONTAINER_VARIANTS}
     >
-      {data.tracks?.items.map(({ track, added_by }, index) => (
-        <Track key={track.name} track={track} adder={added_by} trackNum={index + 1} />
+      {data.map((props, index) => (
+        <Track key={props.track.name} data={props} trackNum={index + 1} />
       ))}
     </motion.div>
   ) : null;

@@ -111,6 +111,6 @@ module.exports = withPWA({
   swcMinify: true,
   // See https://nextjs.org/docs/basic-features/image-optimization
   images: {
-    domains: ["mosaic.scdn.co", "i.scdn.co"],
+    domains: ["mosaic.scdn.co", "i.scdn.co", "images.unsplash.com"],
   },
 });

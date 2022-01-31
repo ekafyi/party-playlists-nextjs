@@ -1,3 +1,5 @@
+import fs from "fs";
+import path from "path";
 import { AnimatePresence } from "framer-motion";
 import type { GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
@@ -6,14 +8,9 @@ import SpotifyWebApi from "spotify-web-api-node";
 import { Card, Footer, GridContainer, MetaHead } from "../components";
 import { APP_NAME, MINIMUM_FIELDS_PARAM } from "../lib/constants";
 import { buildSlug } from "../lib/slug-helpers";
-import { transformPlaylistData } from "../lib/transform-playlist-data";
+import { transformFsToSpotifyPlaylistData } from "../lib/transforms";
 import { assertFulfilled } from "../lib/type-helpers";
-import samplePlaylists from "../sample-data/playlists.json";
-
-/** Playlist object with slug for single playlist route */
-interface IPlaylistWithSlug extends SpotifyApi.SinglePlaylistResponse {
-  slug: string;
-}
+import { printWarningParseError, ZFsPlaylist } from "../lib/zod";
 
 const EmptyView = () => (
   <>
@@ -24,14 +21,14 @@ const EmptyView = () => (
   </>
 );
 
-export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists }): JSX.Element => {
+export const Home: NextPage<{ playlists?: IPlaylistExcerpt[] }> = ({ playlists }): JSX.Element => {
   const [selectedPlaylistSlug, setSelectedPlaylistSlug] = useState<string>();
 
   const router = useRouter();
 
   const findPlaylist = () => {
     const matched = playlists.find((item) => item.slug === selectedPlaylistSlug);
-    return matched ? transformPlaylistData(matched) : null;
+    return matched || null;
   };
 
   if (typeof playlists === "undefined" || !playlists.length) return <EmptyView />;
@@ -51,7 +48,7 @@ export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists 
             {playlists.map((playlist) => (
               <Card
                 key={playlist.slug}
-                listData={transformPlaylistData(playlist)}
+                listData={playlist}
                 onNavigate={(e) => {
                   e.preventDefault();
                   setSelectedPlaylistSlug(playlist.slug);
@@ -71,49 +68,62 @@ export const Home: NextPage<{ playlists?: IPlaylistWithSlug[] }> = ({ playlists 
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  // Don't proceed if no playlist ids.
-  if (!process.env.PLAYLIST_IDS || !process.env.PLAYLIST_IDS.length) return { props: {} };
+  let fsPlaylists = [];
+  let spotifyPlaylists = [];
 
-  if (process.env.DEV_USE_SAMPLE_DATA) {
-    const playlists = samplePlaylists.playlists.map((playlist) => ({
-      ...playlist,
-      slug: buildSlug(playlist),
-      id: null,
-    }));
-    return { props: { playlists } };
+  if (process.env.FS_PLAYLIST_DIRECTORY?.length) {
+    const dataDir = path.join(process.cwd(), process.env.FS_PLAYLIST_DIRECTORY);
+    const filenames = fs.readdirSync(dataDir)?.filter((filename) => filename.endsWith(".json"));
+
+    fsPlaylists = filenames
+      .map((filename) => {
+        const filePath = path.join(dataDir, filename);
+        const fileContents = fs.readFileSync(filePath, "utf8");
+        const parsed = ZFsPlaylist.safeParse(JSON.parse(fileContents || "{}"));
+
+        if (parsed.success) {
+          return transformFsToSpotifyPlaylistData(filename, parsed.data);
+        } else {
+          printWarningParseError(filename);
+          return null;
+        }
+      })
+      .filter((item) => item);
   }
 
-  const spotifyApi = new SpotifyWebApi({
-    clientId: process.env.SPOTIFY_CLIENT_ID,
-    clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
-  });
-
-  return spotifyApi
-    .clientCredentialsGrant()
-    .then((data) => {
-      // console.log("🔒 access token" + data.body["access_token"]);
-      spotifyApi.setAccessToken(data.body["access_token"]);
-
-      // Build an array of playlist requests
-      const playlistIds = process.env.PLAYLIST_IDS.split(",") || [];
-      const promises = playlistIds.map((playlistId) =>
-        spotifyApi.getPlaylist(playlistId, { fields: MINIMUM_FIELDS_PARAM })
-      );
-      return Promise.allSettled(promises);
-    })
-    .then((res) => {
-      const playlists = res
-        .filter(assertFulfilled)
-        .map((res) => res.value.body)
-        .map((playlist) => ({ ...playlist, slug: buildSlug(playlist), id: null }));
-
-      return { props: { playlists } };
-    })
-    .catch((err) => {
-      console.log("😾😾");
-      console.error(err.response || err.code || err);
-      return { props: {} };
+  if (process.env.SPOTIFY_PLAYLIST_IDS?.length) {
+    const spotifyApi = new SpotifyWebApi({
+      clientId: process.env.SPOTIFY_CLIENT_ID,
+      clientSecret: process.env.SPOTIFY_CLIENT_SECRET,
     });
+
+    await spotifyApi
+      .clientCredentialsGrant()
+      .then((data) => {
+        // console.log("🔒 access token" + data.body["access_token"]);
+        spotifyApi.setAccessToken(data.body["access_token"]);
+
+        // Build an array of playlist requests
+        const playlistIds = process.env.SPOTIFY_PLAYLIST_IDS.split(",") || [];
+        const promises = playlistIds.map((playlistId) =>
+          spotifyApi.getPlaylist(playlistId, { fields: MINIMUM_FIELDS_PARAM })
+        );
+        return Promise.allSettled(promises);
+      })
+      .then((res) => {
+        spotifyPlaylists = res
+          .filter(assertFulfilled)
+          .map((res) => res.value.body)
+          .map((playlist) => ({ ...playlist, slug: buildSlug(playlist), id: null }));
+      })
+      .catch((err) => {
+        console.log("😾😾");
+        console.error(err.response || err.code || err);
+      });
+  }
+
+  const playlists = [...fsPlaylists, ...spotifyPlaylists];
+  return { props: { playlists } };
 };
 
 export default Home;

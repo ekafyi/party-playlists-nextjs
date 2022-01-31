@@ -1,10 +1,13 @@
-const SpotifyTrackLink: React.FunctionComponent<{ id: string }> = ({ id }) => (
-  <>
+type TrackLinkProps = SpotifyOrCustomItem;
+
+const TrackLink = ({ id = "", url = "" }: TrackLinkProps) => {
+  const trackUrl = id ? `https://open.spotify.com/track/${id}` : url;
+  return (
     <a
       target="_blank"
       rel="external noopener noreferrer"
-      className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white text-gray-500 hover:text-green-700 focus:text-green-700 focus:ring focus:outline-none rounded-2xl"
-      href={`https://open.spotify.com/track/${id}`}
+      className="absolute right-2 top-1/2 flex h-8 w-8 -translate-y-1/2 transform items-center justify-center rounded-2xl bg-white text-gray-500 hover:text-green-700 focus:text-green-700 focus:outline-none focus:ring"
+      href={trackUrl}
       aria-label="open track in Spotify"
       title="open track in Spotify"
     >
@@ -16,7 +19,7 @@ const SpotifyTrackLink: React.FunctionComponent<{ id: string }> = ({ id }) => (
         </g>
       </svg>
     </a>
-  </>
-);
+  );
+};
 
-export default SpotifyTrackLink;
+export default TrackLink;

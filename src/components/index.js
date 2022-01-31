@@ -10,5 +10,5 @@ export { default as PlaylistImage } from "./PlaylistImage";
 export { default as PlaylistTracks } from "./PlaylistTracks";
 export { default as Share } from "./Share";
 export { default as SinglePlaylistWrapper } from "./SinglePlaylistWrapper";
-export { default as SpotifyTrackLink } from "./SpotifyTrackLink";
 export { default as Track } from "./Track";
+export { default as TrackLink } from "./TrackLink";
