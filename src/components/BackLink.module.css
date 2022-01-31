@@ -19,7 +19,7 @@
 }
 
 .arrow {
-  @apply pointer-events-none fixed top-2 left-2 z-20 text-2xl text-white md:text-3xl;
+  @apply pointer-events-none fixed top-3 left-2 z-20 h-6 w-6 text-white md:h-7 md:w-7 md:text-3xl;
 }
 
 .anchor:hover .arrow,
