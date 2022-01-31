@@ -1,5 +1,5 @@
 import { m as motion } from "framer-motion";
-import { Track } from ".";
+import { Spinner, Track } from ".";
 
 const MOTION_SINGLE_CONTAINER_VARIANTS = {
   visible: {
@@ -27,7 +27,17 @@ const SinglePlaylistTrack = ({ data }: SinglePlaylistTrackProps) => {
         <Track key={props.track.name} data={props} trackNum={index + 1} />
       ))}
     </motion.div>
-  ) : null;
+  ) : (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.3 }}
+      data-area="tracks"
+      className="flex items-center justify-center p-8 text-indigo-400"
+    >
+      <Spinner />
+    </motion.div>
+  );
 };
 
 export default SinglePlaylistTrack;
