@@ -3,7 +3,7 @@ import path from "path";
 import { AnimatePresence } from "framer-motion";
 import type { GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SpotifyWebApi from "spotify-web-api-node";
 import { Card, Footer, GridContainer, MetaHead } from "../components";
 import { APP_NAME, MINIMUM_FIELDS_PARAM } from "../lib/constants";
@@ -23,12 +23,21 @@ const EmptyView = () => (
 
 export const Home: NextPage<{ playlists?: IPlaylistExcerpt[] }> = ({ playlists }): JSX.Element => {
   const [selectedPlaylistSlug, setSelectedPlaylistSlug] = useState<string>();
+  const [isTransitionComplete, setTransitionComplete] = useState(false);
 
   const router = useRouter();
+
+  useEffect(() => {
+    if (isTransitionComplete) router.push(selectedPlaylistSlug);
+  }, [isTransitionComplete, router, selectedPlaylistSlug]);
 
   const findPlaylist = () => {
     const matched = playlists.find((item) => item.slug === selectedPlaylistSlug);
     return matched || null;
+  };
+
+  const handleTransitionComplete = () => {
+    setTransitionComplete(true);
   };
 
   if (typeof playlists === "undefined" || !playlists.length) return <EmptyView />;
@@ -36,31 +45,28 @@ export const Home: NextPage<{ playlists?: IPlaylistExcerpt[] }> = ({ playlists }
   return (
     <>
       <MetaHead titleKey="homePage" title={APP_NAME} url={process.env.URL} />
-      {typeof selectedPlaylistSlug !== "undefined" ? (
-        <main>
-          <AnimatePresence>
-            <Card isExpanded listData={findPlaylist()} />
-          </AnimatePresence>
-        </main>
-      ) : (
-        <GridContainer>
-          <div className="relative mb-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
-            {playlists.map((playlist) => (
-              <Card
-                key={playlist.slug}
-                listData={playlist}
-                onNavigate={(e) => {
-                  e.preventDefault();
-                  setSelectedPlaylistSlug(playlist.slug);
-                  setTimeout(() => {
-                    router.push(playlist.slug);
-                  }, 400);
-                }}
-              />
-            ))}
-          </div>
-        </GridContainer>
-      )}
+      <AnimatePresence>
+        {typeof selectedPlaylistSlug !== "undefined" ? (
+          <main>
+            <Card isExpanded onTransitionComplete={handleTransitionComplete} listData={findPlaylist()} />
+          </main>
+        ) : (
+          <GridContainer>
+            <div className="relative mb-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-6">
+              {playlists.map((playlist) => (
+                <Card
+                  key={playlist.slug}
+                  listData={playlist}
+                  onNavigate={(e) => {
+                    e.preventDefault();
+                    setSelectedPlaylistSlug(playlist.slug);
+                  }}
+                />
+              ))}
+            </div>
+          </GridContainer>
+        )}
+      </AnimatePresence>
       <Footer />
       {/* {JSON.stringify(playlists)} */}
     </>

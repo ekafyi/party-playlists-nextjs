@@ -9,16 +9,24 @@ interface CardProps {
   listData: IPlaylistExcerpt;
   isExpanded?: boolean | "PLACEHOLDER";
   onNavigate?: (event: MouseEvent<HTMLAnchorElement>) => void;
+  onTransitionComplete?: () => void;
   tracksData?: IPlaylistFull["tracks"]["items"];
 }
 
-const Card = ({ listData, isExpanded = false, onNavigate, tracksData = undefined }: CardProps) => {
+const Card = ({
+  listData,
+  isExpanded = false,
+  onNavigate,
+  onTransitionComplete,
+  tracksData = undefined,
+}: CardProps) => {
   const lessMotion = useReducedMotion();
 
   return (
     <motion.article
       className={`${styles.card} ${isExpanded ? styles["card--expanded"] : ""}`}
       layoutId={lessMotion ? undefined : `${listData.name}`}
+      onLayoutAnimationComplete={onTransitionComplete}
     >
       {isExpanded ? (
         <SinglePlaylistWrapper>
